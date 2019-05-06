@@ -1,8 +1,8 @@
-import {ADD_GAME, UPDATE_GAME, UPDATE_GAMES} from '../actions/games'
+import {ADD_EVENT, UPDATE_EVENT, UPDATE_EVENTS} from '../actions/events'
 import {USER_LOGOUT} from '../actions/users'
 
 /*
-The state will contain the games in an object with the game ID as key
+The state will contain the events in an object with the event ID as key
 */
 
 export default (state = null, {type, payload}) => {
@@ -11,22 +11,22 @@ export default (state = null, {type, payload}) => {
     case USER_LOGOUT:
       return null
     
-    case ADD_GAME:
+    case ADD_EVENT:
       return {
         ...state,
         [payload.id]: payload
       }
 
-    case UPDATE_GAME:
+    case UPDATE_EVENT:
       return {
         ...state,
         [payload.id]: payload
       }
 
-    case UPDATE_GAMES:
-      return payload.reduce((games, game) => {
-        games[game.id] = game
-        return games
+    case UPDATE_EVENTS:
+      return payload.reduce((events, event) => {
+        events[event.id] = event
+        return events
       }, {})
 
     default:

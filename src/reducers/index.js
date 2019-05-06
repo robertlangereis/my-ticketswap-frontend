@@ -5,7 +5,7 @@ import currentUser from './currentUser'
 import signup from './signup'
 
 export default {
-  games,
+  events,
   users,
   login,
   currentUser,

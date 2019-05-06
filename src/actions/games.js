@@ -3,32 +3,32 @@ import {baseUrl} from '../constants'
 import {logout} from './users'
 import {isExpired} from '../jwt'
 
-export const ADD_GAME = 'ADD_GAME'
-export const UPDATE_GAME = 'UPDATE_GAME'
-export const UPDATE_GAMES = 'UPDATE_GAMES'
-export const JOIN_GAME_SUCCESS = 'JOIN_GAME_SUCCESS'
-export const UPDATE_GAME_SUCCESS = 'UPDATE_GAME_SUCCESS'
+export const ADD_EVENT = 'ADD_EVENT'
+export const UPDATE_EVENT = 'UPDATE_EVENT'
+export const UPDATE_EVENTS = 'UPDATE_EVENTS'
+export const JOIN_EVENT_SUCCESS = 'JOIN_EVENT_SUCCESS'
+export const UPDATE_EVENT_SUCCESS = 'UPDATE_EVENT_SUCCESS'
 
-const updateGames = games => ({
-  type: UPDATE_GAMES,
-  payload: games
+const updateEvents = events => ({
+  type: UPDATE_EVENTS,
+  payload: events
 })
 
-const addGame = game => ({
-  type: ADD_GAME,
-  payload: game
+const addEvent = event => ({
+  type: ADD_EVENT,
+  payload: event
 })
 
-const updateGameSuccess = () => ({
-  type: UPDATE_GAME_SUCCESS
+const updateEventSuccess = () => ({
+  type: UPDATE_EVENT_SUCCESS
 })
 
-const joinGameSuccess = () => ({
-  type: JOIN_GAME_SUCCESS
+const joinEventSuccess = () => ({
+  type: JOIN_EVENT_SUCCESS
 })
 
 
-export const getGames = () => (dispatch, getState) => {
+export const getEvents = () => (dispatch, getState) => {
   const state = getState()
   if (!state.currentUser) return null
   const jwt = state.currentUser.jwt
@@ -36,41 +36,28 @@ export const getGames = () => (dispatch, getState) => {
   if (isExpired(jwt)) return dispatch(logout())
 
   request
-    .get(`${baseUrl}/games`)
+    .get(`${baseUrl}/events`)
     .set('Authorization', `Bearer ${jwt}`)
     .then(result => {
-      dispatch(updateGames(result.body))
+      dispatch(updateEvents(result.body))
     })
     .catch(err => console.error(err))
 }
 
-export const joinGame = (gameId) => (dispatch, getState) => {
+export const createEvent = () => (dispatch, getState) => {
   const state = getState()
   const jwt = state.currentUser.jwt
 
   if (isExpired(jwt)) return dispatch(logout())
 
   request
-    .post(`${baseUrl}/games/${gameId}/players`)
+    .post(`${baseUrl}/events`)
     .set('Authorization', `Bearer ${jwt}`)
-    .then(_ => dispatch(joinGameSuccess()))
+    .then(result => dispatch(addEvent(result.body)))
     .catch(err => console.error(err))
 }
 
-export const createGame = () => (dispatch, getState) => {
-  const state = getState()
-  const jwt = state.currentUser.jwt
-
-  if (isExpired(jwt)) return dispatch(logout())
-
-  request
-    .post(`${baseUrl}/games`)
-    .set('Authorization', `Bearer ${jwt}`)
-    .then(result => dispatch(addGame(result.body)))
-    .catch(err => console.error(err))
-}
-
-export const updateGame = (gameId, cardId) => (dispatch, getState) => {
+export const updateEvent = (eventId, commentId) => (dispatch, getState) => {
   console.log("action test")
   const state = getState()
   const jwt = state.currentUser.jwt
@@ -78,9 +65,9 @@ export const updateGame = (gameId, cardId) => (dispatch, getState) => {
   if (isExpired(jwt)) return dispatch(logout())
 
   request
-    .patch(`${baseUrl}/games/${gameId}`)
+    .patch(`${baseUrl}/events/${eventId}`)
     .set('Authorization', `Bearer ${jwt}`)
-    .send({ cardId })
-    .then(_ => dispatch(updateGameSuccess()))
+    .send({ commentId })
+    .then(_ => dispatch(updateEventSuccess()))
     .catch(err => console.error(err))
 }
