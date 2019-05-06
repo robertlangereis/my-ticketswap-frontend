@@ -1,0 +1,41 @@
+.AdvertisementForm {
+    background: #61dafb;
+    border-left: 10px solid #282c34;
+    width: 40vw;
+    margin: 0.5em 10px;
+    padding: 0.5em 10px;
+}
+
+.AdvertisementForm_title_textarea {
+    display: inline;
+}
+
+.AdvertisementForm_description_textarea {
+    display: inline;
+}
+
+.AdvertisementForm_price_textarea {
+    display: inline;
+}
+
+.AdvertisementForm_email_textarea {
+    display: inline;
+}
+
+.AdvertisementForm_address_textarea {
+    display: inline;
+}
+
+.AdvertisementForm_pickup_possible_textarea {
+    display: inline;
+}
+
+.AdvertisementForm_phone_nr_textarea {
+    display: inline;
+}
+.AdvertisementForm_picture_url_textarea {
+    display: inline;
+}
+.AdvertisementForm_email_textarea {
+    display: inline;
+}
