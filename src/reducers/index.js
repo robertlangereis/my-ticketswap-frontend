@@ -1,4 +1,4 @@
-import games from './games'
+import events from './events'
 import users from './users'
 import login from './login'
 import currentUser from './currentUser'
