@@ -1,75 +1,63 @@
 import React from 'react'
+import './EventForm.css'
 
 export default (props) => {
     const { onSubmit, onChange, values } = props  
     return (
-        <form className={'AdvertisementForm'} onSubmit={onSubmit}>
-            <label htmlFor="name">Advertisement Title</label>
+        <form className={'EventForm'} onSubmit={onSubmit}>
+            <label htmlFor="name">Eventname</label>
             <input 
                 type="text"
                 name="title" 
                 key="title" 
                 value={values.title}
                 onChange={onChange}
-                className='AdvertisementForm_title_textarea'>
+                className='EventForm_title_textarea'>
             </input>
-            <label htmlFor="content">Product Description</label>
+            <label htmlFor="content">Description</label>
             <textarea 
                 type="text"
                 name="description" 
                 key="description" 
                 value={values.description}
                 onChange={onChange}
-                className='AdvertisementForm_descr_textarea'>
+                className='EventForm_descr_textarea'>
             </textarea>
+            {/* <label htmlFor="price">Price</label>
             <input 
                 type="price"
                 key="price"
                 name="price"
                 value={values.price}
                 onChange={onChange}
-                className='AdvertisementForm_price_textarea'>
-            </input>
-            <label htmlFor="content">Address</label>
-            <textarea 
-                type="text"
-                name="address" 
-                key="address" 
-                value={values.address}
-                onChange={onChange}
-                className='AdvertisementForm_address_textarea'>
-            </textarea>
-            <input 
-                type="checkbox"
-                name="pickup_possible"
-                key="pickup_possible"
-                value={values.pickup_possible}
-                onChange={onChange}
-                className='AdvertisementForm_pickup_possible_textarea'>
-            </input>
-            <input 
-                type="text"
-                name="phone_nr"
-                key="phone_nr"
-                value={values.phone_nr}
-                onChange={onChange}
-                className='AdvertisementForm_phone_nr_textarea'>
-            </input>
+                className='EventForm_price_textarea'>
+            </input> */}
+            <label htmlFor="content">Image URL</label>
             <input 
                 type="text"
                 name="picture_url"
                 key="picture_url"
                 value={values.picture_url}
                 onChange={onChange}
-                className='AdvertisementForm_picture_url_textarea'>
+                className='EventForm_picture_url_textarea'>
             </input>
+            <label htmlFor="datetime-local">Start Date</label>
             <input 
-                type="email"
-                name="email"
-                key="email"
-                value={values.email}
+                type="datetime-local"
+                name="start_date"
+                key="start_date"
+                value={values.start_date}
                 onChange={onChange}
-                className='AdvertisementForm_email_textarea'>
+                className='EventForm_start_date_textarea'>
+            </input>
+            <label htmlFor="datetime-local">End Date</label>
+            <input 
+                type="datetime-local"
+                name="end_date"
+                key="end_date"
+                value={values.end_date}
+                onChange={onChange}
+                className='EventForm_end_date_textarea'>
             </input>
             <button type="submit">Submit</button>
         </form>

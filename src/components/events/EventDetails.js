@@ -9,7 +9,7 @@ export default (props) => {
     return (<div>
             <h1>{event.name}</h1>
             <p>{event.description}</p>
-            <img src={event.image_url}/>
+            <img src={event.image_url} alt={"event"}/>
             <i>{event.start_date}</i>
             <i>{event.end_date}</i>
             <button onClick={onDelete}>Delete Event</button>

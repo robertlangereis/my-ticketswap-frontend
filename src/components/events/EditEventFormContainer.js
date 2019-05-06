@@ -1,9 +1,9 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {updateEvent} from '../actions/event'
+import {updateEvent} from '../../actions/events'
 import EventForm from './event_form/EventForm'
 
-class EditAdFormContainer extends React.Component {
+class EditEventFormContainer extends React.Component {
   state = { }
 
   onChange = (event) => {
@@ -39,9 +39,9 @@ class EditAdFormContainer extends React.Component {
       description: '',
       image_url: '',
       start_date: '',
-      start_date: ''
+      end_date: ''
     })
-    this.props.updateAd(this.props.event.id, this.state.formValues)
+    this.props.updateEvent(this.props.event.id, this.state.formValues)
     console.log("onSubmit send. This.props.event.id" ,this.props.event.id, "this.state.value", this.state.formValues)
   }
 

@@ -1,4 +1,4 @@
-.AdvertisementForm {
+.EventForm {
     background: #61dafb;
     border-left: 10px solid #282c34;
     width: 40vw;
@@ -6,36 +6,36 @@
     padding: 0.5em 10px;
 }
 
-.AdvertisementForm_title_textarea {
+.EventForm_title_textarea {
     display: inline;
 }
 
-.AdvertisementForm_description_textarea {
+.EventForm_description_textarea {
     display: inline;
 }
 
-.AdvertisementForm_price_textarea {
+.EventForm_price_textarea {
     display: inline;
 }
 
-.AdvertisementForm_email_textarea {
+.EventForm_email_textarea {
     display: inline;
 }
 
-.AdvertisementForm_address_textarea {
+.EventForm_address_textarea {
     display: inline;
 }
 
-.AdvertisementForm_pickup_possible_textarea {
+.EventForm_pickup_possible_textarea {
     display: inline;
 }
 
-.AdvertisementForm_phone_nr_textarea {
+.EventForm_phone_nr_textarea {
     display: inline;
 }
-.AdvertisementForm_picture_url_textarea {
+.EventForm_start_date_textarea {
     display: inline;
 }
-.AdvertisementForm_email_textarea {
+.EventForm_end_date_textarea {
     display: inline;
 }

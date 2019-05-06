@@ -15,7 +15,7 @@ const TopBar = (props) => {
     <AppBar position="absolute" style={{zIndex:10}}>
       <Toolbar>
         <Typography variant="title" color="inherit" style={{flex: 1}}>
-        ❤ [Heart-code]
+        [TicketSwap]
         </Typography>
         {
           user &&
@@ -31,11 +31,11 @@ const TopBar = (props) => {
           <Button color="inherit" onClick={() => history.push('/signup')}>Sign up</Button>
         }
         {
-          location.pathname.indexOf('games/') > 0 &&
-          <Button color="inherit" onClick={() => history.push('/games')}>All Games</Button>
+          location.pathname.indexOf('events/') > 0 &&
+          <Button color="inherit" onClick={() => history.push('/events')}>All Games</Button>
         }
         {
-          /games$/.test(location.pathname) &&
+          /events$/.test(location.pathname) &&
           <Button color="inherit" onClick={() => history.push('/logout')}>Log out</Button>
         }
       </Toolbar>
