@@ -5,18 +5,19 @@ import {isExpired} from '../jwt'
 
 export const ADD_EVENT = 'ADD_EVENT'
 export const UPDATE_EVENT = 'UPDATE_EVENT'
-export const UPDATE_EVENTS = 'UPDATE_EVENTS'
+export const GET_EVENTS = 'GET_EVENTS'
+export const GET_EVENT = 'GET_EVENT'
 export const UPDATE_EVENT_SUCCESS = 'UPDATE_EVENT_SUCCESS'
 
 const updateEvents = events => ({
-  type: UPDATE_EVENTS,
+  type: GET_EVENTS,
   payload: events
 })
 
-// const updateEvent = event => ({
-//   type: UPDATE_EVENT,
-//   payload: event
-// })
+const updateEvent = event => ({
+  type: GET_EVENT,
+  payload: event
+})
 
 const addEvent = event => ({
   type: ADD_EVENT,
@@ -30,8 +31,7 @@ const updateEventSuccess = () => ({
 
 export const getEvents = () => (dispatch, getState) => {
   const state = getState()
-  console.log("action state", state)
-  
+  console.log("action state", state.events)
   request
     .get(`${baseUrl}/events`)
     .then(result => {
@@ -58,7 +58,6 @@ export const getEvent = (eventId) => (dispatch, getState) => {
     })
     .catch(err => console.error(err))
 }
-
 
 export const createEvent = () => (dispatch, getState) => {
   const state = getState()

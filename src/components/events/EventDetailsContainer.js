@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import AdDetails from './AdDetails'
-import {loadEvent, deleteEvent} from '../../actions/events'
+import {getEvent, deleteEvent} from '../../actions/event'
 
 class AdDetailsContainer extends React.Component {
   state = {
@@ -15,7 +15,7 @@ class AdDetailsContainer extends React.Component {
   }
   
   componentDidMount() {
-    this.props.loadEvent(Number(this.props.match.params.id))
+    this.props.getEvent(Number(this.props.match.params.id))
   }
 
   onDelete = () => {

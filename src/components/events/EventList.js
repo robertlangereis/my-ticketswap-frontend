@@ -7,19 +7,19 @@ export default class EventList extends Component {
     }
  
   render() {
-    console.log(this.props.events, "this.props.events Eventlist Comp")
     const { events } = this.props
+    // console.log(events, "this.props.events Eventlist Comp")
     return(
             <div>
               <h1>All Events</h1>
               <div>    
-                {events && console.log(events, "events Eventlist Comp") &&
+                {events &&
                 <ul>{events.map(events =>
                     <li key={events.id} className="event">{this.renderEvents(events)}</li>)}
                 </ul>
                 }
               </div>
-              {/* There are currently { events.length } upcoming events. */}
+              There are currently { events.length } upcoming events.
             </div>)
   }
 }

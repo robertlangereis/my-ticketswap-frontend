@@ -14,7 +14,7 @@ class EventListContainer extends React.Component {
     if (this.props.events){
     return<div> 
       <EventList events={this.props.events}/> 
-      {console.log(this.props.events, "this.props.events Home Comp")}
+      {/* {console.log(this.props.events, "this.props.events Home Comp")} */}
       {/* <h1>Create a New Advertisement</h1> */}
       {/* <EventFormFormContainer/> */}
       </div>}

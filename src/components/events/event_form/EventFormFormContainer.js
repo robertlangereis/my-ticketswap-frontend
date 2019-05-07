@@ -1,9 +1,10 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import AdvertisementForm from './AdvertisementForm'
-import {createAd} from '../../actions/ad'
+import EventForm from './EventForm'
+import {createEvent} from '../../../actions/events'
+import EventForm from './EventForm';
 
-class AdvertisementFormContainer extends React.Component {
+class EventFormContainer extends React.Component {
   state = {
     title: '',
     description: '',
@@ -40,7 +41,7 @@ class AdvertisementFormContainer extends React.Component {
   render() {
     return (<div>
       <h2>Submit a new advertisement:</h2>
-    <AdvertisementForm
+    <EventForm
       onSubmit={this.onSubmit}
       onChange={this.onChange}
       values={this.state}
@@ -48,4 +49,4 @@ class AdvertisementFormContainer extends React.Component {
   }
 }
 
-export default connect(null, {createAd})(AdvertisementFormContainer)
+export default connect(null, {createAd})(EventFormContainer)
