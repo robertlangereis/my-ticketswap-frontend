@@ -42,6 +42,8 @@ export const getEvents = () => (dispatch, getState) => {
 }
 
 export const getEvent = (eventId) => (dispatch) => {
+  // console.log("action test - eventId:",eventId)
+  // console.log("action test - request incoming:",request)
   request
   .get(`${baseUrl}/events/${eventId}`)
   .then(response => {

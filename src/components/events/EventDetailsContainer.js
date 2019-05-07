@@ -15,9 +15,11 @@ class EventDetailsContainer extends React.Component {
   }
   
   componentDidMount() {
-    // if (this.props.event === null) this.props.getEvent()
-    const getEvent = this.props.getEvent(Number(this.props.match.params.id))
-    console.log("this.props in render is:", getEvent)
+    // if (this.props.event === null) this.props.getEvent(this.props.match.params.id)
+    this.props.getEvent(this.props.match.params.id)
+    // const getEvent = this.props.getEvent(this.props.match.params.id)
+    // console.log("this.props.match.params.id bij EventDetailsCont",this.props.match.params.id)
+    // console.log(this.props.getEvent(1))
   }
 
   onDelete = () => {
@@ -26,6 +28,7 @@ class EventDetailsContainer extends React.Component {
   }
   
   render() {
+    console.log("this.props in render is:", this.props.events)
     return (<div><EventDetails
       onDelete={this.onDelete}
       event={this.props.event}
@@ -38,7 +41,7 @@ class EventDetailsContainer extends React.Component {
 
 const mapStateToProps = state => ({
   event: state.event,
-  // events: state.events
+  events: state.events
 })
 
 export default connect(mapStateToProps, {getEvent})(EventDetailsContainer)
