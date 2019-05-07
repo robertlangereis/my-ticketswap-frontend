@@ -7,12 +7,15 @@ export default (props) => {
     const { event, onDelete } = props  
     if (event){
     return (<div>
-            <h1>{event.name}</h1>
-            <p>{event.description}</p>
-            <img src={event.image_url} alt={"event"}/>
-            <i>{event.start_date}</i>
-            <i>{event.end_date}</i>
-            <button onClick={onDelete}>Delete Event</button>
+            <h1>{event.eventName}</h1>
+            <p>{event.eventDescription}</p>
+            <img src={event.image_url} width="300" height="150" alt={"event"}/>
+            <br></br>
+            <i>start date:{event.start_date}</i>
+            <br></br>
+            <i>end date:{event.end_date}</i>
+            <br></br>
+            {/* <button onClick={onDelete}>Delete Event</button> */}
             <br></br>
             <EditEventFormContainer/>
             <button type="button">
