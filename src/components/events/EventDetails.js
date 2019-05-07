@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 export default (props) => {
     // console.log(props)
-    const { event, onDelete } = props  
+    const { event } = props  
     if (event){
     return (<div>
             <h1>{event.eventName}</h1>

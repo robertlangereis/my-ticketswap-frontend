@@ -2,6 +2,8 @@ import React from 'react'
 import {connect} from 'react-redux'
 import EventDetails from './EventDetails'
 import {getEvent} from '../../actions/events'
+import {getTickets} from '../../actions/tickets'
+import TicketListContainer from '../e-tickets/TicketListContainer'
 
 class EventDetailsContainer extends React.Component {
   state = {
@@ -16,11 +18,12 @@ class EventDetailsContainer extends React.Component {
   
   componentDidMount() {
     // if (this.props.event === null) this.props.getEvent(this.props.match.params.id)
-    this.props.getEvent(this.props.events.match.params.id)
-    this.props.getTickets(this.props.event.match.params.id)
+    this.props.getEvent(this.props.match.params.id)
+    this.props.getTickets(this.props.match.params.id)
+    console.log(this.props.getTickets(1), "this.props.getTickets(1)")
+
     // const getEvent = this.props.getEvent(this.props.match.params.id)
     // console.log("this.props.match.params.id bij EventDetailsCont",this.props.match.params.id)
-    // console.log(this.props.getEvent(1))
   }
 
   onDelete = () => {
@@ -29,9 +32,9 @@ class EventDetailsContainer extends React.Component {
   }
   
   render() {
-    console.log("this.props.events in EDC render is:", this.props.events)
-    console.log("this.props.event in EDC render is:", this.props.event)
-    console.log("this.props.tickets in EDC render is:", this.props.tickets)
+    // console.log("this.props.events in EDC render is:", this.props.events)
+    // console.log("this.props.event in EDC render is:", this.props.event)
+    // console.log("this.props.tickets in EDC render is:", this.props.tickets)
     return (
     <div>
       <div><EventDetails
@@ -41,7 +44,7 @@ class EventDetailsContainer extends React.Component {
       /></div>
     <br></br>
       <div>
-        <TicketDetailsContainer events={this.props.tickets}/> 
+        {/* <TicketListContainer events={this.props.tickets}/>  */}
         {console.log(this.props.tickets, "this.props.tickets EventDetailsContainer Comp")}
       </div>
     </div>)
