@@ -3,23 +3,23 @@ import { Link } from 'react-router-dom'
 
 export default class EventList extends Component {
     renderEvents(event) {    
-    return <Link to={`/events/${event.id}`}>{event.eventName}</Link>
+    return <Link to={`/events/${event.eventId}`}>{event.eventName}</Link>
     }
  
   render() {
-    console.log(this.props.events, "this.props.events Eventlist Comp")
     const { events } = this.props
+    // console.log(events, "this.props.events Eventlist Comp")
     return(
             <div>
               <h1>All Events</h1>
               <div>    
-                {events && console.log(events, "events Eventlist Comp") &&
+                {events &&
                 <ul>{events.map(events =>
                     <li key={events.id} className="event">{this.renderEvents(events)}</li>)}
                 </ul>
                 }
               </div>
-              {/* There are currently { events.length } upcoming events. */}
+              There are currently { events.length } upcoming events.
             </div>)
   }
 }

@@ -1,9 +1,9 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {updateEvent} from '../../actions/events'
-import EventForm from './event_form/EventForm'
+import {eventUpdate} from '../../../actions/events'
+import TicketForm from './TicketForm'
 
-class EditEventFormContainer extends React.Component {
+class EditTicketFormContainer extends React.Component {
   state = { }
 
   onChange = (event) => {
@@ -41,17 +41,17 @@ class EditEventFormContainer extends React.Component {
       start_date: '',
       end_date: ''
     })
-    this.props.updateEvent(this.props.event.id, this.state.formValues)
+    this.props.eventUpdate(this.props.event.id, this.state.formValues)
     console.log("onSubmit send. This.props.event.id" ,this.props.event.id, "this.state.value", this.state.formValues)
   }
 
   render() {
     return (<div>
-    <h1>Edit this Event
+    <h1>Edit this Ticket
     </h1>
-    <button onClick={ this.onEdit }>Edit Event</button>
+    <button onClick={ this.onEdit }>Edit Ticket</button>
     { this.state.editMode && 
-    <EventForm
+    <TicketForm
       onSubmit={this.onSubmit}
       onChange={this.onChange}
       values={this.state.formValues}
@@ -65,4 +65,4 @@ const mapStateToProps = state => ({
   event: state.event
 })
 
-export default connect(mapStateToProps, {updateEvent})(EditEventFormContainer)
+export default connect(mapStateToProps, {eventUpdate})(EditTicketFormContainer)

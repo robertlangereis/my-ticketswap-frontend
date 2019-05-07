@@ -1,0 +1,41 @@
+.TicketForm {
+    background: #61dafb;
+    border-left: 10px solid #282c34;
+    width: 40vw;
+    margin: 0.5em 10px;
+    padding: 0.5em 10px;
+}
+
+.TicketForm_title_textarea {
+    display: inline;
+}
+
+.TicketForm_description_textarea {
+    display: inline;
+}
+
+.TicketForm_price_textarea {
+    display: inline;
+}
+
+.TicketForm_email_textarea {
+    display: inline;
+}
+
+.TicketForm_address_textarea {
+    display: inline;
+}
+
+.TicketForm_pickup_possible_textarea {
+    display: inline;
+}
+
+.TicketForm_phone_nr_textarea {
+    display: inline;
+}
+.TicketForm_start_date_textarea {
+    display: inline;
+}
+.TicketForm_end_date_textarea {
+    display: inline;
+}
