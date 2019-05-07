@@ -1,5 +1,5 @@
 import React from 'react'
-import EditEventFormContainer from './EditEventFormContainer';
+import EditEventFormContainer from '../eventForm/EditEventFormContainer';
 import { Link } from 'react-router-dom'
 
 export default (props) => {

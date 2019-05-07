@@ -1,12 +1,14 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {getTickets} from '../../actions/tickets'
+import {getTickets} from '../../../actions/tickets'
 import TicketList from './TicketList'
+
 // import TicketFormContainer from './advertisement_form/TicketFormFormContainer'
 
 class TicketListContainer extends React.Component {
   componentDidMount() {
     // console.log('Ticket Home componentDidMount test!')
+    // const Eventid = this.props.getEvent(this.props.match.params.id)
     this.props.getTickets()
   }
 
@@ -24,7 +26,7 @@ class TicketListContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  tickets: state.tickets,
+  tickets: state.eventtickets,
   authenticated: state.currentUser !== null,
   users: state.users === null ? null : state.users,
 })

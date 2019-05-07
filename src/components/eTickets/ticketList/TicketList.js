@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from '../../../../node_modules/react-router-dom'
 
 export default class TicketList extends Component {
     renderTickets(ticket) {    
-    return <Link to={`/events/${ticket.id}`}>{ticket.ticketName}</Link>
+    return <Link to={`/events/${ticket.id}`}>{ticket.ticketDescription}</Link>
     }
  
   render() {
@@ -15,7 +15,7 @@ export default class TicketList extends Component {
               <div>    
                 {tickets &&
                 <ul>{tickets.map(tickets =>
-                    <li key={tickets.id} className="ticket">{this.renderTickets(tickets)}</li>)}
+                    <li key={tickets.ticketId} className="ticket">{this.renderTickets(tickets)}</li>)}
                 </ul>
                 }
               </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {getEvents} from '../../actions/events'
+import {getEvents} from '../../../actions/events'
 import EventList from './EventList'
 // import EventFormContainer from './advertisement_form/EventFormFormContainer'
 

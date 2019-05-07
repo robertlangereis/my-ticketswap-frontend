@@ -3,11 +3,11 @@ import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 import LoginPage from './components/login/LoginPage'
 import SignupPage from './components/signup/SignupPage'
 // import EventList from './components/events/EventList'
-import EventDetailsContainer from './components/events/EventDetailsContainer'
+import EventDetailsContainer from './components/events/eventDetails/EventDetailsContainer'
 import LogoutPage from './components/logout/LogoutPage'
 import './App.css'
 import TopBar from './components/layout/TopBar'
-import Home from './components/events/Home';
+import Home from './components/events/Home/Home';
 
 class App extends Component {
   render() {

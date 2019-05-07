@@ -4,13 +4,21 @@ import {logout} from './users'
 import {isExpired} from '../jwt'
 
 export const ADD_TICKET = 'ADD_TICKET'
-export const UPDATE_TICKET = 'UPDATE_TICKET'
+export const GET_TICKETS = 'GET_TICKETS'
+export const GET_TICKET = 'GET_TICKET'
+
 // export const UPDATE_TICKET_SUCCESS = 'UPDATE_TICKET_SUCCESS'
 
+const updateTickets = tickets => ({
+  type: GET_TICKETS,
+  payload: tickets
+})
+
 const updateTicket = ticket => ({
-  type: UPDATE_TICKET,
+  type: GET_TICKET,
   payload: ticket
 })
+
 
 const addTicket = ticket => ({
   type: ADD_TICKET,
@@ -27,8 +35,8 @@ export const getTickets = (eventId) => (dispatch) => {
     .get(`${baseUrl}/events/${eventId}/tickets/`)
     .then(response => {
       if(response.ok){
-        // console.log("action test - response.body:",response.body)
-        dispatch(updateTicket(response.body))
+        console.log("action tickets test - response.body:",response.body)
+        dispatch(updateTickets(response.body))
           }
           else{return "there was an error loading the event"}
       })
