@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 export default class EventList extends Component {
     renderEvents(event) {    
-    return <Link to={`/events/${event.id}`}>{event.eventName}</Link>
+    return <Link to={`/events/${event.eventId}`}>{event.eventName}</Link>
     }
  
   render() {
