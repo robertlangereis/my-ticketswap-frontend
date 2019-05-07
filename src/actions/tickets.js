@@ -22,15 +22,9 @@ const updateTicketSuccess = () => ({
 })
 
 
-export const getTickets = () => (dispatch, getState) => {
-  const state = getState()
-  if (!state.currentUser) return null
-  const jwt = state.currentUser.jwt
-
-  if (isExpired(jwt)) return dispatch(logout())
-
+export const getTickets = (eventId) => (dispatch, getState) => {
   request
-    .get(`${baseUrl}/events`)
+    .get(`${baseUrl}/events/${eventId}/tickets/`)
     .set('Authorization', `Bearer ${jwt}`)
     .then(result => {
       dispatch(updateTicket(result.body))
@@ -57,13 +51,13 @@ export const updateTicket = (ticketId, data) => (dispatch, getState) => {
   if (isExpired(jwt)) return dispatch(logout())
   Events
   .findByPk(req.params.id)
-  .then(event => {
-    if (!event) {
+  .then(ticket => {
+    if (!ticket) {
       return res.status(404).send({
-        message: `event does not exist`
+        message: `ticket does not exist`
       })
     }
-    return event.update(req.body).then(event => res.send(event))
+    return ticket.update(req.body).then(ticket => res.send(ticket))
   })
   .catch(error => next(error))
   request
