@@ -53,7 +53,7 @@ class EventDetailsContainer extends React.Component {
 
 const mapStateToProps = state => ({
   event: state.event,
-  events: state.events,
+  // events: state.events,
   tickets: state.eventtickets
 })
 
