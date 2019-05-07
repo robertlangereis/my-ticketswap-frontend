@@ -19,7 +19,7 @@ export default class TicketList extends Component {
                 </ul>
                 }
               </div>
-              There are currently { tickets.length } upcoming tickets.
+              There are currently { tickets.length } tickets available for this event.
             </div>)
   }
 }
