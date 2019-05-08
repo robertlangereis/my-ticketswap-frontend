@@ -44,15 +44,15 @@ export const getTickets = (eventId) => (dispatch) => {
       .catch(err => console.error(err))
   }
 
-export const getTicket = (eventId, ticketId, getState) => (dispatch) => {
+export const getTicket = (ticketId) => (dispatch) => {
   // console.log("action test - eventId:",eventId)
-  // console.log("action test - ticketId:",eventId)
-  const state = getState()
-  const jwt = state.currentUser.jwt
-  if (isExpired(jwt)) return dispatch(logout())
+  console.log("action test - ticketId:",ticketId)
+  // const state = getState()
+  // const jwt = state.currentUser.jwt
+  // if (isExpired(jwt)) return dispatch(logout())
+  console.log("action getTicket test - request incoming:",request)
   request
-  // console.log("action test - request incoming:",request)
-  .get(`${baseUrl}/events/${eventId}/tickets/${ticketId}`)
+  .get(`${baseUrl}/events/${ticketId.eventId}/tickets/${ticketId}`)
   .then(response => {
     if(response.ok){
       // console.log("action test - response.body:",response.body)
