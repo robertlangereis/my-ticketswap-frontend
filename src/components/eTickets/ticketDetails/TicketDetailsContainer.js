@@ -1,51 +1,51 @@
-import React from 'react'
-import {connect} from 'react-redux'
-// import TicketDetails from './TicketDetails'
-// import {getTicket} from '../../actions/tickets'
-import {getEvent} from '../../../actions/events'
+// import React from 'react'
+// import {connect} from 'react-redux'
+// // import TicketDetails from './TicketDetails'
+// // import {getTicket} from '../../actions/tickets'
+// import {getEvent} from '../../../actions/events'
 
-class TicketDetailsContainer extends React.Component {
-  state = {
-    formValues: {
-      name: '',
-      description: '',
-      image_url: '',
-      start_date: '',
-      end_date: ''
-    }
-  }
+// class TicketDetailsContainer extends React.Component {
+//   // state = {
+//   //   formValues: {
+//   //     name: '',
+//   //     description: '',
+//   //     image_url: '',
+//   //     start_date: '',
+//   //     end_date: ''
+//   //   }
+//   // }
   
-  componentDidMount() {
-    this.props.getEvent(this.props.match.params.id)
-    // if (this.props.event === null) this.props.getTicket(this.props.match.params.id)
-    // this.props.getTicket(this.props.match.params.id)
-    // const getTicket = this.props.getTicket(this.props.match.params.id)
-    // console.log("this.props.match.params.id bij TicketDetailsCont",this.props.match.params.id)
-    // console.log(this.props.getTicket(1))
-  }
+//   componentDidMount() {
+//     this.props.getEvent(this.props.match.params.id)
+//     // if (this.props.event === null) this.props.getTicket(this.props.match.params.id)
+//     // this.props.getTicket(this.props.match.params.id)
+//     // const getTicket = this.props.getTicket(this.props.match.params.id)
+//     // console.log("this.props.match.params.id bij TicketDetailsCont",this.props.match.params.id)
+//     // console.log(this.props.getTicket(1))
+//   }
 
-  onDelete = () => {
-    // this.props.deleteTicket(this.props.event.id)
-    this.props.history.push('/')
-  }
+//   onDelete = () => {
+//     // this.props.deleteTicket(this.props.event.id)
+//     this.props.history.push('/')
+//   }
   
-  render() {
-    console.log("this.props in render is:", this.props)
-    return
-    // return (<div><TicketDetails
-      // onDelete={this.onDelete}
-      // tickets={this.props.tickets}
-    //   // values={this.state}
-    // /><br></br>
-    // </div>
-    // )
-  }
-}
+//   render() {
+//     console.log("this.props in render is:", this.props)
+//     return
+//     // return (<div><TicketDetails
+//       // onDelete={this.onDelete}
+//       // tickets={this.props.tickets}
+//     //   // values={this.state}
+//     // /><br></br>
+//     // </div>
+//     // )
+//   }
+// }
 
-const mapStateToProps = state => ({
-  event: state.event,
-  // events: state.events,
-  // tickets: state.tickets
-})
+// const mapStateToProps = state => ({
+//   event: state.event,
+//   // events: state.events,
+//   // tickets: state.tickets
+// })
 
-export default connect(mapStateToProps, {getEvent})(TicketDetailsContainer)
+// export default connect(mapStateToProps, {getEvent})(TicketDetailsContainer)

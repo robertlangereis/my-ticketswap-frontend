@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import EventDetails from './EventDetails'
 import {getEvent} from '../../../actions/events'
 // import {getTickets} from '../../../actions/tickets'
-import TicketList from '../../eTickets/ticketList/TicketList'
+import TicketListContainer from '../../eTickets/ticketList/TicketListContainer'
 
 class EventDetailsContainer extends React.Component {
   state = {
@@ -44,7 +44,7 @@ class EventDetailsContainer extends React.Component {
       /></div>
     <br></br>
       <div>
-        {this.props.event && <TicketList tickets={this.props.event.tickets}/> }
+        {this.props.event && <TicketListContainer event={this.props.event}/> }
         {/* <div>{console.log(this.props.event, "event tickets EventDetailsContainer Comp")}</div> */}
       </div>
     </div>)
