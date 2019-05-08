@@ -31,6 +31,7 @@ const addTicket = ticket => ({
 
 
 export const getTickets = (eventId) => (dispatch) => {
+  console.log("action tickets test eventID:",eventId)
   request
     .get(`${baseUrl}/events/${eventId}/tickets/`)
     .then(response => {
