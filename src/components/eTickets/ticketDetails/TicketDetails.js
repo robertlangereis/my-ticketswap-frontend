@@ -7,11 +7,12 @@ export default (props) => {
     const { ticket, event } = props  
     
     if (ticket && event){
-    console.log(ticket)
-    console.log("event props loaded", event)
+    // console.log(ticket)
+    // console.log("event props loaded", event)
     return (<div>
             <h1>Eventname: {event.eventName}</h1>
             <p>Ticket description: {ticket.ticketDescription}</p>
+            <p>We calculated that the risk of this ticket being a fraud is: {ticket.fraudpercentage}%</p>
             <img src={ticket.imageUrl} width="300" height="150" alt={"ticket"}/>
             <br></br>
             <i>start date:{ticket.start_date}</i>

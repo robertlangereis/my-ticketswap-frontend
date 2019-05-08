@@ -31,7 +31,7 @@ class TicketDetailsContainer extends React.Component {
   }
   
   render() {
-    console.log("this.props in render is:", this.props.event)
+    // console.log("this.props in render is:", this.props.event)
     return (<div><TicketDetails
       onDelete={this.onDelete}
       ticket={this.props.ticket}
