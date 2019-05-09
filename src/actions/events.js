@@ -75,7 +75,7 @@ export const createEvent = () => (dispatch, getState) => {
   })
     .catch(err => console.error(err))
 }
-
+//
 export const eventUpdate = (eventId, commentId) => (dispatch, getState) => {
   console.log("action test")
   const state = getState()
