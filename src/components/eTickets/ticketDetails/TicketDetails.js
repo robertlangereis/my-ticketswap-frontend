@@ -1,5 +1,5 @@
 import React from 'react'
-// import EditTicketFormContainer from './EditTicketFormContainer';
+import EditTicketFormContainer from '../ticket_form/EditTicketFormContainer';
 import { Link } from 'react-router-dom'
 
 export default (props) => {
@@ -21,7 +21,7 @@ export default (props) => {
             <br></br>
             {/* <button onClick={onDelete}>Delete Ticket</button> */}
             <br></br>
-            {/* <EditTicketFormContainer/> */}
+            <EditTicketFormContainer/>
             <button type="button">
                 <Link style={{display: 'block', height: '100%'}} to={`/`}>HOME</Link>
             </button>

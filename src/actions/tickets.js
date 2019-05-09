@@ -6,6 +6,7 @@ import {isExpired} from '../jwt'
 export const ADD_TICKET = 'ADD_TICKET'
 export const GET_TICKETS = 'GET_TICKETS'
 export const GET_TICKET = 'GET_TICKET'
+export const UPDATE_TICKET_SUCCESS = 'UPDATE_TICKET_SUCCESS'
 
 // export const UPDATE_TICKET_SUCCESS = 'UPDATE_TICKET_SUCCESS'
 
@@ -25,9 +26,9 @@ const addTicket = ticket => ({
   payload: ticket
 })
 
-// const updateTicketSuccess = () => ({
-//   type: UPDATE_TICKET_SUCCESS
-// })
+const updateTicketSuccess = () => ({
+  type: UPDATE_TICKET_SUCCESS
+})
 
 
 export const getTickets = (eventId) => (dispatch) => {
@@ -75,26 +76,26 @@ export const createTicket = (eventId) => (dispatch, getState) => {
     .catch(err => console.error(err))
 }
 
-// export const updateTicket = (ticketId, data) => (dispatch, getState) => {
-//   console.log("action test")
-//   const state = getState()
-//   const jwt = state.currentUser.jwt
-//   if (isExpired(jwt)) return dispatch(logout())
-//   request
-//   .findByPk(request.params.id)
-//   .then(ticket => {
-//     if (!ticket) {
-//       return ticket.status(404).send({
-//         message: `ticket does not exist`
-//       })
-//     }
-//     return ticket.update(request.body).then(ticket => request.send(ticket))
-//   })
-//   .catch(error => next(error))
-//   request
-//     .put(`${baseUrl}/events/:id/tickets/${ticketId}`)
-//     .set('Authorization', `Bearer ${jwt}`)
-//     .send({ data })
-//     .then(_ => dispatch(updateTicketSuccess()))
-//     .catch(err => console.error(err))
-// }
+export const editTicket = (ticketId, data) => (dispatch, getState, next) => {
+  console.log("action test")
+  const state = getState()
+  const jwt = state.currentUser.jwt
+  if (isExpired(jwt)) return dispatch(logout())
+  request
+  .findByPk(request.params.ticketId)
+  .then(ticket => {
+    if (!ticket) {
+      return ticket.status(404).send({
+        message: `ticket does not exist`
+      })
+    }
+    return ticket.update(request.body).then(ticket => request.send(ticket))
+  })
+  .catch(error => next(error))
+  request
+    .put(`${baseUrl}/events/:id/tickets/${ticketId}`)
+    .set('Authorization', `Bearer ${jwt}`)
+    .send({ data })
+    .then(_ => dispatch(updateTicketSuccess()))
+    .catch(err => console.error(err))
+}

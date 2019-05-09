@@ -16,15 +16,15 @@ class TicketFormContainer extends React.Component {
     email: '',
   }
 
-  onChange = (ad) => {
-    // console.log('ad.target.name test:', ad.target.name)
+  onChange = (ticket) => {
+    // console.log('ticket.target.name test:', ticket.target.name)
     this.setState({
-      [ad.target.name]: ad.target.value
+      [ticket.target.name]: ticket.target.value
     })
   }
 
-  onSubmit = (ad) => {
-    ad.preventDefault()
+  onSubmit = (ticket) => {
+    ticket.preventDefault()
     this.setState({
       title: '',
       description: '',
@@ -35,12 +35,12 @@ class TicketFormContainer extends React.Component {
       picture_url: '',
       email: '',
     })
-    this.props.createAd(this.state)
+    this.props.createTicket(this.state)
   }
 
   render() {
     return (<div>
-      <h2>Submit a new advertisement:</h2>
+      <h2>Submit a new Ticket for this Event:</h2>
     <TicketForm
       onSubmit={this.onSubmit}
       onChange={this.onChange}
@@ -49,4 +49,4 @@ class TicketFormContainer extends React.Component {
   }
 }
 
-export default connect(null, {createAd})(TicketFormContainer)
+export default connect(null, {createTicket})(TicketFormContainer)
