@@ -8,11 +8,11 @@ export default (props) => {
             <label htmlFor="name">Eventname</label>
             <input 
                 type="text"
-                name="title" 
-                key="title" 
-                value={values.title}
+                name="name" 
+                key="name" 
+                value={values.name}
                 onChange={onChange}
-                className='EventForm_title_textarea'>
+                className='EventForm_name_textarea'>
             </input>
             <label htmlFor="content">Description</label>
             <textarea 
@@ -23,23 +23,14 @@ export default (props) => {
                 onChange={onChange}
                 className='EventForm_descr_textarea'>
             </textarea>
-            {/* <label htmlFor="price">Price</label>
-            <input 
-                type="price"
-                key="price"
-                name="price"
-                value={values.price}
-                onChange={onChange}
-                className='EventForm_price_textarea'>
-            </input> */}
             <label htmlFor="content">Image URL</label>
             <input 
                 type="text"
-                name="picture_url"
-                key="picture_url"
-                value={values.picture_url}
+                name="image_url"
+                key="image_url"
+                value={values.image_url}
                 onChange={onChange}
-                className='EventForm_picture_url_textarea'>
+                className='EventForm_image_url_textarea'>
             </input>
             <label htmlFor="datetime-local">Start Date</label>
             <input 

@@ -1,22 +1,29 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {Redirect} from 'react-router-dom'
 import {getEvents} from '../../../actions/events'
 import EventList from './EventList'
-// import EventFormContainer from './advertisement_form/EventFormFormContainer'
+import {getUsers} from '../../../actions/users'
+import EventFormContainer from '../eventForm/EventFormContainer'
 
 class EventListContainer extends React.Component {
   componentDidMount() {
-    // console.log('Event Home componentDidMount test!')
+    if (this.props.users === null) this.props.getUsers()
     this.props.getEvents()
   }
 
   render() {
+    const {users, authenticated, events} = this.props
+    if (!authenticated) return (
+			<Redirect to="/login" />
+      )
+    if (events === null || users === null) return 'No events at the moment. Create your own event using the form below!'
+
     if (this.props.events){
     return<div> 
       <EventList events={this.props.events}/> 
-      {/* {console.log(this.props.events, "this.props.events Home Comp")} */}
-      {/* <h1>Create a New Advertisement</h1> */}
-      {/* <EventFormFormContainer/> */}
+      <h1>Create a New Event</h1>
+      <EventFormContainer/>
       </div>}
     else return 'Loading events...'
 }
@@ -29,4 +36,4 @@ const mapStateToProps = state => ({
   users: state.users === null ? null : state.users,
 })
 
-export default connect(mapStateToProps, {getEvents})(EventListContainer)
+export default connect(mapStateToProps, {getEvents, getUsers})(EventListContainer)

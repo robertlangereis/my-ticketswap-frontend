@@ -6,6 +6,7 @@ import {isExpired} from '../jwt'
 export const ADD_TICKET = 'ADD_TICKET'
 export const GET_TICKETS = 'GET_TICKETS'
 export const GET_TICKET = 'GET_TICKET'
+export const UPDATE_TICKET_SUCCESS = 'UPDATE_TICKET_SUCCESS'
 
 // export const UPDATE_TICKET_SUCCESS = 'UPDATE_TICKET_SUCCESS'
 
@@ -25,17 +26,18 @@ const addTicket = ticket => ({
   payload: ticket
 })
 
-// const updateTicketSuccess = () => ({
-//   type: UPDATE_TICKET_SUCCESS
-// })
+const updateTicketSuccess = () => ({
+  type: UPDATE_TICKET_SUCCESS
+})
 
 
 export const getTickets = (eventId) => (dispatch) => {
+  // console.log("action tickets test eventID:",eventId)
   request
     .get(`${baseUrl}/events/${eventId}/tickets/`)
     .then(response => {
       if(response.ok){
-        console.log("action tickets test - response.body:",response.body)
+        // console.log("action tickets test - response.body:",response.body)
         dispatch(updateTickets(response.body))
           }
           else{return "there was an error loading the event"}
@@ -43,18 +45,18 @@ export const getTickets = (eventId) => (dispatch) => {
       .catch(err => console.error(err))
   }
 
-export const getTicket = (eventId, ticketId, getState) => (dispatch) => {
+export const getTicket = (ticketId) => (dispatch) => {
   // console.log("action test - eventId:",eventId)
-  // console.log("action test - ticketId:",eventId)
-  const state = getState()
-  const jwt = state.currentUser.jwt
-  if (isExpired(jwt)) return dispatch(logout())
+  console.log("action test - ticketId:",ticketId)
+  // const state = getState()
+  // const jwt = state.currentUser.jwt
+  // if (isExpired(jwt)) return dispatch(logout())
+  // console.log("action getTicket test - request incoming:",request)
   request
-  // console.log("action test - request incoming:",request)
-  .get(`${baseUrl}/events/${eventId}/tickets/${ticketId}`)
+  .get(`${baseUrl}/events/${ticketId.eventId}/tickets/${ticketId}`)
   .then(response => {
     if(response.ok){
-      // console.log("action test - response.body:",response.body)
+      console.log("action test - GET_TICKET response.body:",response.body)
       dispatch(updateTicket(response.body))
         }
         else{return "there was an error loading the ticket"}
@@ -74,26 +76,26 @@ export const createTicket = (eventId) => (dispatch, getState) => {
     .catch(err => console.error(err))
 }
 
-// export const updateTicket = (ticketId, data) => (dispatch, getState) => {
-//   console.log("action test")
-//   const state = getState()
-//   const jwt = state.currentUser.jwt
-//   if (isExpired(jwt)) return dispatch(logout())
-//   request
-//   .findByPk(request.params.id)
-//   .then(ticket => {
-//     if (!ticket) {
-//       return ticket.status(404).send({
-//         message: `ticket does not exist`
-//       })
-//     }
-//     return ticket.update(request.body).then(ticket => request.send(ticket))
-//   })
-//   .catch(error => next(error))
-//   request
-//     .put(`${baseUrl}/events/:id/tickets/${ticketId}`)
-//     .set('Authorization', `Bearer ${jwt}`)
-//     .send({ data })
-//     .then(_ => dispatch(updateTicketSuccess()))
-//     .catch(err => console.error(err))
-// }
+export const editTicket = (ticketId, data) => (dispatch, getState, next) => {
+  const state = getState()
+  console.log("action test", state)
+  const jwt = state.currentUser.jwt
+  if (isExpired(jwt)) return dispatch(logout())
+  request
+  .findByPk(request.params.ticketId)
+  .then(ticket => {
+    if (!ticket) {
+      return ticket.status(404).send({
+        message: `ticket does not exist`
+      })
+    }
+    return ticket.update(request.body).then(ticket => request.send(ticket))
+  })
+  .catch(error => next(error))
+  request
+    .put(`${baseUrl}/events/:id/tickets/${ticketId}`)
+    .set('Authorization', `Bearer ${jwt}`)
+    .send({ data })
+    .then(_ => dispatch(updateTicketSuccess()))
+    .catch(err => console.error(err))
+}

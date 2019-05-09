@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import EventDetails from './EventDetails'
 import {getEvent} from '../../../actions/events'
-import {getTickets} from '../../../actions/tickets'
+// import {getTickets} from '../../../actions/tickets'
 import TicketListContainer from '../../eTickets/ticketList/TicketListContainer'
 
 class EventDetailsContainer extends React.Component {
@@ -17,11 +17,11 @@ class EventDetailsContainer extends React.Component {
   }
   
   componentDidMount() {
-    // if (this.props.event === null) this.props.getEvent(this.props.match.params.id)
     this.props.getEvent(this.props.match.params.id)
-    this.props.getTickets(this.props.match.params.id)
-    // console.log(this.props.getTickets(1), "this.props.getTickets(1)")
-
+    // if (this.props.event === null) this.props.getEvent(this.props.match.params.id)
+    // if (this.props.event === null) this.props.getTickets(this.props.match.params.id)
+    // console.log(this.props.getTickets(this.props.match.params.id), "this.props.getTickets(:id)")
+    // console.log(this.props.getTickets(), "this.props.getTickets(:id)")
     // const getEvent = this.props.getEvent(this.props.match.params.id)
     // console.log("this.props.match.params.id bij EventDetailsCont",this.props.match.params.id)
   }
@@ -44,8 +44,8 @@ class EventDetailsContainer extends React.Component {
       /></div>
     <br></br>
       <div>
-        <TicketListContainer events={this.props.tickets}/> 
-        {console.log(this.props, "this.props EventDetailsContainer Comp")}
+        {this.props.event && <TicketListContainer event={this.props.event}/> }
+        {/* <div>{console.log(this.props.event, "event tickets EventDetailsContainer Comp")}</div> */}
       </div>
     </div>)
   }
@@ -54,7 +54,7 @@ class EventDetailsContainer extends React.Component {
 const mapStateToProps = state => ({
   event: state.event,
   // events: state.events,
-  tickets: state.eventtickets
+  // tickets: state.eventtickets
 })
 
-export default connect(mapStateToProps, {getEvent, getTickets})(EventDetailsContainer)
+export default connect(mapStateToProps, {getEvent})(EventDetailsContainer)

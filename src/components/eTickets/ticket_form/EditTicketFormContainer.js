@@ -1,20 +1,20 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {eventUpdate} from '../../../actions/events'
+import {editTicket} from '../../../actions/tickets'
 import TicketForm from './TicketForm'
 
 class EditTicketFormContainer extends React.Component {
   state = { }
 
-  onChange = (event) => {
+  onChange = (ticket) => {
     // update the formValues property with the new data from the input field
-    // console.log(event.target.title, "event.target.title")
-    // console.log(event.target.name, "event.target.name")
+    // console.log(ticket.target.title, "ticket.target.title")
+    // console.log(ticket.target.name, "ticket.target.name")
     // console.log(this.state, "this state")
     this.setState({
       formValues: {
         ...this.state.formValues,
-        [event.target.name]: event.target.name.value
+        [ticket.target.name]: ticket.target.name.value
       }
     })
   }
@@ -23,17 +23,17 @@ class EditTicketFormContainer extends React.Component {
     this.setState({
       editMode: true,
       formValues: {
-        name: this.props.event.name,
-        description: this.props.event.description,
-        image_url: this.props.event.picture_url,
-        start_date: this.props.event.start_date,
-        end_date: this.props.event.end_date
+        // name: this.props.ticket.name,
+        // description: this.props.ticket.description,
+        ticket_description: this.props.ticket_description,
+        // start_date: this.props.ticket.start_date,
+        // end_date: this.props.ticket.end_date
       }
     })
   }
   
-  onSubmit = (event) => {
-    event.preventDefault()
+  onSubmit = (ticket) => {
+    ticket.preventDefault()
     this.setState({
       name: '',
       description: '',
@@ -41,11 +41,11 @@ class EditTicketFormContainer extends React.Component {
       start_date: '',
       end_date: ''
     })
-    this.props.eventUpdate(this.props.event.id, this.state.formValues)
-    console.log("onSubmit send. This.props.event.id" ,this.props.event.id, "this.state.value", this.state.formValues)
+    this.props.editTicket(this.props.id, this.state.formValues)
+    console.log("onSubmit send. This.props.ticket.id" ,this.props.id, "this.state.value", this.state.formValues)
   }
-
   render() {
+    console.log(this.props, "this.props")
     return (<div>
     <h1>Edit this Ticket
     </h1>
@@ -61,8 +61,8 @@ class EditTicketFormContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  events: state.events,
-  event: state.event
+  // tickets: state.tickets,
+  ticket: state.ticket
 })
 
-export default connect(mapStateToProps, {eventUpdate})(EditTicketFormContainer)
+export default connect(mapStateToProps, {editTicket})(EditTicketFormContainer)
