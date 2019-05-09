@@ -11,6 +11,7 @@ class EventListContainer extends React.Component {
   }
 
   render() {
+    console.log(this.props.authenticated, "this.props.authenticated")
     if (this.props.events){
     return<div> 
       <EventList events={this.props.events}/> 
