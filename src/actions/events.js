@@ -48,7 +48,7 @@ export const getEvent = (eventId) => (dispatch) => {
   .get(`${baseUrl}/events/${eventId}`)
   .then(response => {
     if(response.ok){
-      // console.log("action test - response.body:",response.body)
+      console.log("action test - response.body:",response.body)
       dispatch(updateEvent(response.body))
         }
         else{return "there was an error loading the event"}
@@ -58,12 +58,21 @@ export const getEvent = (eventId) => (dispatch) => {
 
 export const createEvent = () => (dispatch, getState) => {
   const state = getState()
+  // console.log("action test - STATE:",state)
   const jwt = state.currentUser.jwt
+  // console.log("action test - JWT:",jwt)
   if (isExpired(jwt)) return dispatch(logout())
+  // console.log("survived JWT")
   request
   .post(`${baseUrl}/events`)
   .set('Authorization', `Bearer ${jwt}`)
-  .then(result => dispatch(addEvent(result.body)))
+  .then(result => {
+    if(result.ok){
+    console.log("action test - response.body:",result.body)
+    dispatch(addEvent(result.body)) 
+  }
+  else {return "there was an error creating the event"}
+  })
     .catch(err => console.error(err))
 }
 

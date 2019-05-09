@@ -9,7 +9,6 @@ import EventFormContainer from '../eventForm/EventFormContainer'
 class EventListContainer extends React.Component {
   componentDidMount() {
     if (this.props.users === null) this.props.getUsers()
-    // console.log('Event Home componentDidMount test!')
     this.props.getEvents()
   }
 
