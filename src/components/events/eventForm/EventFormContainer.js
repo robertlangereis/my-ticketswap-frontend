@@ -5,18 +5,16 @@ import {createEvent} from '../../../actions/events'
 
 class EventFormContainer extends React.Component {
   state = {
-    title: '',
-    description: '',
-    price: '',
-    address: '',
-    pickup_possible: '',
-    phone_nr: '',
-    picture_url: '',
-    email: '',
+      name: '',
+      description: '',
+      image_url: '',
+      start_date: '',
+      end_date: ''
   }
 
   onChange = (event) => {
-    // console.log('ad.target.name test:', ad.target.name)
+    // console.log('ad.target.name test:', event.target.name)
+    // console.log(this.state)
     this.setState({
       [event.target.name]: event.target.value
     })
@@ -25,14 +23,11 @@ class EventFormContainer extends React.Component {
   onSubmit = (event) => {
     event.preventDefault()
     this.setState({
-      title: '',
+      name: '',
       description: '',
-      price: '',
-      address: '',
-      pickup_possible: '',
-      phone_nr: '',
-      picture_url: '',
-      email: '',
+      image_url: '',
+      start_date: '',
+      end_date: ''
     })
     this.props.createEvent(this.state)
   }

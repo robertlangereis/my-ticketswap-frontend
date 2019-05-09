@@ -15,17 +15,14 @@ class EventListContainer extends React.Component {
 
   render() {
     const {users, authenticated, events} = this.props
-    console.log(users, "users on homescreen? &&", events, "events.... &&....authenticated", authenticated)
     if (!authenticated) return (
 			<Redirect to="/login" />
       )
-    console.log(this.props.authenticated, "this.props.authenticated")
     if (events === null || users === null) return 'No events at the moment. Create your own event using the form below!'
 
     if (this.props.events){
     return<div> 
       <EventList events={this.props.events}/> 
-      {console.log(this.props, "this.props.events Home Comp")}
       <h1>Create a New Event</h1>
       <EventFormContainer/>
       </div>}

@@ -59,13 +59,11 @@ export const getEvent = (eventId) => (dispatch) => {
 export const createEvent = () => (dispatch, getState) => {
   const state = getState()
   const jwt = state.currentUser.jwt
-
   if (isExpired(jwt)) return dispatch(logout())
-
   request
-    .post(`${baseUrl}/events`)
-    .set('Authorization', `Bearer ${jwt}`)
-    .then(result => dispatch(addEvent(result.body)))
+  .post(`${baseUrl}/events`)
+  .set('Authorization', `Bearer ${jwt}`)
+  .then(result => dispatch(addEvent(result.body)))
     .catch(err => console.error(err))
 }
 
