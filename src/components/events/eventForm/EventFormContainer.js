@@ -1,8 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import EventForm from './EventForm'
-import {createEvent} from '../../../actions/events'
-import EventForm from './EventForm';
+import {createEvent} from '../../../actions/events' 
 
 class EventFormContainer extends React.Component {
   state = {
@@ -16,15 +15,15 @@ class EventFormContainer extends React.Component {
     email: '',
   }
 
-  onChange = (ad) => {
+  onChange = (event) => {
     // console.log('ad.target.name test:', ad.target.name)
     this.setState({
-      [ad.target.name]: ad.target.value
+      [event.target.name]: event.target.value
     })
   }
 
-  onSubmit = (ad) => {
-    ad.preventDefault()
+  onSubmit = (event) => {
+    event.preventDefault()
     this.setState({
       title: '',
       description: '',
@@ -35,12 +34,12 @@ class EventFormContainer extends React.Component {
       picture_url: '',
       email: '',
     })
-    this.props.createAd(this.state)
+    this.props.createEvent(this.state)
   }
 
   render() {
     return (<div>
-      <h2>Submit a new advertisement:</h2>
+      <h2>Submit a new Event:</h2>
     <EventForm
       onSubmit={this.onSubmit}
       onChange={this.onChange}
@@ -49,4 +48,4 @@ class EventFormContainer extends React.Component {
   }
 }
 
-export default connect(null, {createAd})(EventFormContainer)
+export default connect(null, {createEvent})(EventFormContainer)
