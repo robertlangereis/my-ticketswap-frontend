@@ -77,8 +77,8 @@ export const createTicket = (eventId) => (dispatch, getState) => {
 }
 
 export const editTicket = (ticketId, data) => (dispatch, getState, next) => {
-  console.log("action test")
   const state = getState()
+  console.log("action test", state)
   const jwt = state.currentUser.jwt
   if (isExpired(jwt)) return dispatch(logout())
   request

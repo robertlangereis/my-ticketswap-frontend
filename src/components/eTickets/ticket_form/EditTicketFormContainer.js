@@ -25,7 +25,7 @@ class EditTicketFormContainer extends React.Component {
       formValues: {
         // name: this.props.ticket.name,
         // description: this.props.ticket.description,
-        ticket_description: this.props.ticket.ticket_description,
+        ticket_description: this.props.ticket_description,
         // start_date: this.props.ticket.start_date,
         // end_date: this.props.ticket.end_date
       }
@@ -41,11 +41,11 @@ class EditTicketFormContainer extends React.Component {
       start_date: '',
       end_date: ''
     })
-    this.props.editTicket(this.props.ticket.id, this.state.formValues)
-    console.log("onSubmit send. This.props.ticket.id" ,this.props.ticket.id, "this.state.value", this.state.formValues)
+    this.props.editTicket(this.props.id, this.state.formValues)
+    console.log("onSubmit send. This.props.ticket.id" ,this.props.id, "this.state.value", this.state.formValues)
   }
-
   render() {
+    console.log(this.props, "this.props")
     return (<div>
     <h1>Edit this Ticket
     </h1>

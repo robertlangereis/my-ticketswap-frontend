@@ -2,10 +2,14 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {getEvents} from '../../../actions/events'
 import EventList from './EventList'
+import {getUsers} from '../../../actions/users'
 // import EventFormContainer from './advertisement_form/EventFormFormContainer'
 
 class EventListContainer extends React.Component {
   componentDidMount() {
+    if (this.props.authenticated) {
+      if (this.props.users === null) this.props.getUsers()
+    }
     // console.log('Event Home componentDidMount test!')
     this.props.getEvents()
   }
@@ -30,4 +34,4 @@ const mapStateToProps = state => ({
   users: state.users === null ? null : state.users,
 })
 
-export default connect(mapStateToProps, {getEvents})(EventListContainer)
+export default connect(mapStateToProps, {getEvents, getUsers})(EventListContainer)
