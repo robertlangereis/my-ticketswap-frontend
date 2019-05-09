@@ -46,7 +46,7 @@ export const getTickets = (eventId) => (dispatch) => {
 
 export const getTicket = (ticketId) => (dispatch) => {
   // console.log("action test - eventId:",eventId)
-  // console.log("action test - ticketId:",ticketId)
+  console.log("action test - ticketId:",ticketId)
   // const state = getState()
   // const jwt = state.currentUser.jwt
   // if (isExpired(jwt)) return dispatch(logout())

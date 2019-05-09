@@ -16,7 +16,7 @@ class TicketDetailsContainer extends React.Component {
   }
   
   componentDidMount() {
-    this.props.getTicket(this.props.match.params.id)
+    this.props.getTicket(this.props.match.params.ticketid)
     this.props.getEvent(this.props.match.params.id)
     // if (this.props.event === null) this.props.getTicket(this.props.match.params.id)
     // this.props.getTicket(this.props.match.params.id)
