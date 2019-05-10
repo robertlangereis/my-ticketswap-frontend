@@ -42,7 +42,7 @@ class TicketDetailsContainer extends React.Component {
       onDelete={this.onDelete}
       ticket={this.props.ticket}
       event={this.props.event}
-      // values={this.state}
+      values={this.state}
     /><br></br>
     </div>
     )

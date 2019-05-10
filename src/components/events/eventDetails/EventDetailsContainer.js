@@ -2,8 +2,10 @@ import React from 'react'
 import {connect} from 'react-redux'
 import EventDetails from './EventDetails'
 import {getEvent} from '../../../actions/events'
-// import {getTickets} from '../../../actions/tickets'
+import {getUsers} from '../../../actions/users'
+import {getTickets} from '../../../actions/tickets'
 import TicketListContainer from '../../eTickets/ticketList/TicketListContainer'
+import TicketFormContainer from '../../eTickets/ticket_form/TicketFormContainer'
 
 class EventDetailsContainer extends React.Component {
   state = {
@@ -19,7 +21,10 @@ class EventDetailsContainer extends React.Component {
   componentDidMount() {
     this.props.getEvent(this.props.match.params.id)
     // if (this.props.event === null) this.props.getEvent(this.props.match.params.id)
-    // if (this.props.event === null) this.props.getTickets(this.props.match.params.id)
+    if (this.props.event === null) this.props.getTickets(this.props.match.params.id)
+    if (this.props.authenticated) {
+      if (this.props.users === null) this.props.getUsers()
+    }
     // console.log(this.props.getTickets(this.props.match.params.id), "this.props.getTickets(:id)")
     // console.log(this.props.getTickets(), "this.props.getTickets(:id)")
     // const getEvent = this.props.getEvent(this.props.match.params.id)
@@ -46,6 +51,8 @@ class EventDetailsContainer extends React.Component {
       <div>
         {this.props.event && <TicketListContainer event={this.props.event}/> }
         {/* <div>{console.log(this.props.event, "event tickets EventDetailsContainer Comp")}</div> */}
+        {/* {console.log(this.props.event, "this.props.event")} */}
+        {this.props.event && <TicketFormContainer event={this.props.event}/>}
       </div>
     </div>)
   }
@@ -57,4 +64,8 @@ const mapStateToProps = state => ({
   // tickets: state.eventtickets
 })
 
-export default connect(mapStateToProps, {getEvent})(EventDetailsContainer)
+const mapDispatchToProps = {
+  getUsers, getEvent, getTickets
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EventDetailsContainer)

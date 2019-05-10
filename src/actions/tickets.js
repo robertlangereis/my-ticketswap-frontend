@@ -64,7 +64,7 @@ export const getTicket = (ticketId) => (dispatch) => {
     .catch(err => console.error(err))
 }
 
-export const createTicket = (eventId) => (dispatch, getState) => {
+export const createTicket = (eventId, data) => (dispatch, getState) => {
   const state = getState()
   const jwt = state.currentUser.jwt
 
@@ -72,6 +72,7 @@ export const createTicket = (eventId) => (dispatch, getState) => {
   request
     .post(`${baseUrl}/events/${eventId}/tickets/`)
     .set('Authorization', `Bearer ${jwt}`)
+    .send(data)
     .then(result => dispatch(addTicket(result.body)))
     .catch(err => console.error(err))
 }

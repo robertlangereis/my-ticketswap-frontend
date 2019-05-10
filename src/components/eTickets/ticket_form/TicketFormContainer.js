@@ -1,23 +1,17 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import TicketForm from './TicketForm'
-import {createTicket} from '../../../actions/events'
-import TicketForm from './TicketForm';
+import {createTicket} from '../../../actions/tickets'
 
 class TicketFormContainer extends React.Component {
   state = {
-    title: '',
-    description: '',
+    imageUrl: '',
     price: '',
-    address: '',
-    pickup_possible: '',
-    phone_nr: '',
-    picture_url: '',
-    email: '',
+    ticketDescription: '',
   }
 
   onChange = (ticket) => {
-    // console.log('ticket.target.name test:', ticket.target.name)
+    // console.log('this.props.eventId:', this.props.event.eventId)
     this.setState({
       [ticket.target.name]: ticket.target.value
     })
@@ -26,16 +20,11 @@ class TicketFormContainer extends React.Component {
   onSubmit = (ticket) => {
     ticket.preventDefault()
     this.setState({
-      title: '',
-      description: '',
+      imageUrl: '',
       price: '',
-      address: '',
-      pickup_possible: '',
-      phone_nr: '',
-      picture_url: '',
-      email: '',
+      ticketDescription: '',
     })
-    this.props.createTicket(this.state)
+    this.props.createTicket(this.props.event.eventId, this.state)
   }
 
   render() {
