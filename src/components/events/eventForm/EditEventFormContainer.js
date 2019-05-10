@@ -47,8 +47,7 @@ class EditEventFormContainer extends React.Component {
 
   render() {
     return (<div>
-    <h1>Edit this Event
-    </h1>
+    <h3>Edit this Event</h3>
     <button onClick={ this.onEdit }>Edit Event</button>
     { this.state.editMode && 
     <EventForm

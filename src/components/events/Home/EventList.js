@@ -8,7 +8,6 @@ export default class EventList extends Component {
  
   render() {
     const { events } = this.props
-    console.log(events, "this.props.events Eventlist Comp")
     return(
             <div>
               <h1>All Events</h1>
@@ -16,9 +15,9 @@ export default class EventList extends Component {
                 {events &&
                 <ul>
                 {events.map(events =>
-                    <li key={events.id} className="event"><a href={`/events/${events.eventId}`}><img src = {events.image_url}  width="300" height="150" alt="event"/></a>
+                    <li key={events.eventId} className="event"><a href={`/events/${events.eventId}`}><img src = {events.image_url}  width="300" height="150" alt="event"/></a>
                     <br></br>
-                    <div class="eventname">{this.renderEvents(events)}<br></br></div></li>
+                    <div className="eventname">{this.renderEvents(events)}<br></br></div></li>
                     )}
                 </ul>
                 }

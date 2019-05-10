@@ -13,8 +13,6 @@ class EventFormContainer extends React.Component {
   }
 
   onChange = (event) => {
-    // console.log('ad.target.name test:', event.target.name)
-    // console.log(this.state)
     this.setState({
       [event.target.name]: event.target.value
     })

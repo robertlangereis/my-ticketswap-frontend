@@ -30,11 +30,6 @@ class EventDetailsContainer extends React.Component {
     // const getEvent = this.props.getEvent(this.props.match.params.id)
     // console.log("this.props.match.params.id bij EventDetailsCont",this.props.match.params.id)
   }
-
-  onDelete = () => {
-    // this.props.deleteEvent(this.props.event.id)
-    this.props.history.push('/')
-  }
   
   render() {
     // console.log("this.props.events in EDC render is:", this.props.events)
@@ -43,7 +38,6 @@ class EventDetailsContainer extends React.Component {
     return (
     <div>
       <div><EventDetails
-      onDelete={this.onDelete}
       event={this.props.event}
       values={this.state}
       /></div>
@@ -51,7 +45,7 @@ class EventDetailsContainer extends React.Component {
       <div>
         {this.props.event && <TicketListContainer event={this.props.event}/> }
         {/* <div>{console.log(this.props.event, "event tickets EventDetailsContainer Comp")}</div> */}
-        {/* {console.log(this.props.event, "this.props.event")} */}
+        {/* {console.log(this.props.users, "this.props.event")} */}
         {this.props.event && <TicketFormContainer event={this.props.event}/>}
       </div>
     </div>)
@@ -60,8 +54,8 @@ class EventDetailsContainer extends React.Component {
 
 const mapStateToProps = state => ({
   event: state.event,
-  // events: state.events,
-  // tickets: state.eventtickets
+  authenticated: state.currentUser !== null,
+  users: state.users === null ? null : state.users,
 })
 
 const mapDispatchToProps = {

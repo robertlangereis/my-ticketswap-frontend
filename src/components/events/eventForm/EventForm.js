@@ -5,7 +5,7 @@ export default (props) => {
     const { onSubmit, onChange, values } = props  
     return (
         <form className={'EventForm'} onSubmit={onSubmit}>
-            <label htmlFor="name">Eventname</label>
+            <label htmlFor="name" style={{color:'white'}}>Eventname </label>
             <input 
                 type="text"
                 name="eventName" 
@@ -14,7 +14,8 @@ export default (props) => {
                 onChange={onChange}
                 className='EventForm_name_textarea'>
             </input>
-            <label htmlFor="content">Description</label>
+            <br></br>
+            <label htmlFor="content" style={{color:'white'}}>Description </label>
             <textarea 
                 type="text"
                 name="eventDescription" 
@@ -23,7 +24,8 @@ export default (props) => {
                 onChange={onChange}
                 className='EventForm_descr_textarea'>
             </textarea>
-            <label htmlFor="content">Image URL</label>
+            <br></br>
+            <label htmlFor="content" style={{color:'white'}}>Image URL </label>
             <input 
                 type="text"
                 name="image_url"
@@ -32,7 +34,8 @@ export default (props) => {
                 onChange={onChange}
                 className='EventForm_image_url_textarea'>
             </input>
-            <label htmlFor="datetime-local">Start Date</label>
+            <br></br>
+            <label htmlFor="datetime-local" style={{color:'white'}}>Start Date </label>
             <input 
                 type="datetime-local"
                 name="start_date"
@@ -41,7 +44,8 @@ export default (props) => {
                 onChange={onChange}
                 className='EventForm_start_date_textarea'>
             </input>
-            <label htmlFor="datetime-local">End Date</label>
+            <br></br>
+            <label htmlFor="datetime-local" style={{color:'white'}}>End Date </label>
             <input 
                 type="datetime-local"
                 name="end_date"

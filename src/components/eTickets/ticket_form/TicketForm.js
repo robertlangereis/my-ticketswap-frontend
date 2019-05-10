@@ -5,7 +5,7 @@ export default (props) => {
     const { onSubmit, onChange, values } = props  
     return (
         <form className={'TicketForm'} onSubmit={onSubmit}>
-            <label htmlFor="content">Description</label>
+            <label htmlFor="content" style={{color:'white'}}>Description </label>
             <textarea 
                 type="text"
                 name="ticketDescription" 
@@ -14,7 +14,8 @@ export default (props) => {
                 onChange={onChange}
                 className='TicketForm_descr_textarea'>
             </textarea>
-            <label htmlFor="price">Price</label>
+            <br></br>
+            <label htmlFor="price" style={{color:'white'}}>Price </label>
             <input 
                 type="price"
                 key="price"
@@ -23,7 +24,8 @@ export default (props) => {
                 onChange={onChange}
                 className='TicketForm_price_textarea'>
             </input>
-            <label htmlFor="content">Ticket Image URL</label>
+            <br></br>
+            <label htmlFor="content" style={{color:'white'}}>Ticket Image URL </label>
             <input 
                 type="text"
                 name="imageUrl"

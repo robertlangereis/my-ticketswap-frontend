@@ -24,21 +24,18 @@ export default (props) => {
         else if (ticket.fraudpercentage > 60) color.red = true 
     // console.log("event props loaded", event)
     return (<div>
+                <br></br>
+                <Link style={{display: 'block', height: '100%', color: 'Blue'}} to={`/`}>Back to Eventlist</Link>
             <h1>Eventname: {event.eventName}</h1>
             <p>Ticket description: {ticket.ticketDescription}</p>
             <h3>We calculated that the risk of this ticket being a fraud is: {ticket.fraudpercentage}%</h3>
             <div>{color()}</div>
             <img src={ticket.imageUrl} width="300" height="150" alt={"ticket"}/>
             <br></br>
-            <i>start date:{ticket.start_date}</i>
-            <br></br>
-            <i>end date:{ticket.end_date}</i>
-            <br></br>
-            {/* <button onClick={onDelete}>Delete Ticket</button> */}
+            <h2>PRICE: €{ticket.price}</h2>
             <br></br>
             <EditTicketFormContainer/>
             <button type="button">
-                <Link style={{display: 'block', height: '100%'}} to={`/`}>HOME</Link>
             </button>
             </div>)    }
     else return 'Loading Ticket...'
