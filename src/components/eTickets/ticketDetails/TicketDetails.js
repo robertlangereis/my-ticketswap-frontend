@@ -10,9 +10,9 @@ export default (props) => {
     }
     
     color = () => {
-        if(color.green === true) return <h3>"GREEN"</h3>
-        else if (color.orange === true) return <h3>"ORANGE"</h3>
-        else if (color.red === true) return <div style="color:red;">"RED"</div>
+        if(color.green === true) return <h3 style={{color: "green"}}>"Low Fraud Risk"</h3>
+        else if (color.orange === true) return <h3 style={{color: "orange"}}>"Note: Medium Fraud Risk"</h3>
+        else if (color.red === true) return <h3 style={{ color: "red" }}>"NOTE: HIGH FRAUD RISK"</h3>
       }
 
     // console.log(props)
@@ -27,7 +27,7 @@ export default (props) => {
             <h1>Eventname: {event.eventName}</h1>
             <p>Ticket description: {ticket.ticketDescription}</p>
             <h3>We calculated that the risk of this ticket being a fraud is: {ticket.fraudpercentage}%</h3>
-            <div>RISK LEVEL: {color()}</div>
+            <div>{color()}</div>
             <img src={ticket.imageUrl} width="300" height="150" alt={"ticket"}/>
             <br></br>
             <i>start date:{ticket.start_date}</i>
