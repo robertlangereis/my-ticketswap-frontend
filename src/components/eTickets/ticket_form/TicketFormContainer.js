@@ -11,7 +11,6 @@ class TicketFormContainer extends React.Component {
   }
 
   onChange = (ticket) => {
-    // console.log('this.props.eventId:', this.props.event.eventId)
     this.setState({
       [ticket.target.name]: ticket.target.value
     })

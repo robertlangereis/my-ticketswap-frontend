@@ -21,21 +21,12 @@ class EventDetailsContainer extends React.Component {
   componentDidMount() {
     this.props.getEvent(this.props.match.params.id)
     this.props.getEvents()
-    // if (this.props.event === null) this.props.getEvent(this.props.match.params.id)
-    // if (this.props.event === null) this.props.getTickets(this.props.match.params.id)
     if (this.props.authenticated) {
       if (this.props.users === null) this.props.getUsers()
     }
-    // console.log(this.props.getTickets(), "this.props.getTickets(:id)")
-    // const getEvent = this.props.getEvent(this.props.match.params.id)
-    // console.log("this.props.match.params.id bij EventDetailsCont",this.props.match.params.id)
   }
   
   render() {
-    console.log(this.props,"this.props")
-    // console.log("this.props.events in EDC render is:", this.props.events)
-    // console.log("this.props.event in EDC render is:", this.props.event)
-    // console.log("this.props.tickets in EDC render is:", this.props.tickets)
     return (
     <div>
       <div><EventDetails
@@ -45,8 +36,6 @@ class EventDetailsContainer extends React.Component {
     <br></br>
       <div>
         {this.props.event && <TicketListContainer event={this.props.event}/> }
-        {/* <div>{console.log(this.props.event, "event tickets EventDetailsContainer Comp")}</div> */}
-        {/* {console.log(this.props.users, "this.props.event")} */}
         {this.props.event && <TicketFormContainer event={this.props.event}/>}
       </div>
     </div>)

@@ -28,7 +28,6 @@ class EventFormContainer extends React.Component {
       end_date: ''
     })
     this.props.createEvent(this.state)
-    console.log(this.state)
   }
 
   render() {

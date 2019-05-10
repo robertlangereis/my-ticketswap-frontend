@@ -6,7 +6,6 @@ The state will contain the tickets in an object with the event ID as key
 */
 
 export default (state = null, {type, payload}) => {
-  // console.log("reducer test: ", type, payload)
   switch (type) {
     case USER_LOGOUT:
       return null
@@ -16,19 +15,19 @@ export default (state = null, {type, payload}) => {
         [payload.id]: payload
       }
     
-    // case UPDATE_TICKET:
-    //   return {
-    //     ...state,
-    //     [payload.id]: payload
-    //   }
-    case GET_TICKETS:
-    console.log("TICKETS REDUCER incoming. Payload:", payload)
-    return state = payload
+    case UPDATE_TICKET:
+      return {
+        ...state,
+        [payload.id]: payload
+      }
     // case GET_TICKETS:
-    //   return payload.reduce((tickets, event) => {
-      //     tickets[event.id] = event
-      //     return tickets
-      //   }, {})
+    // console.log("TICKETS REDUCER incoming. Payload:", payload)
+    // return state = payload
+    case GET_TICKETS:
+      return payload.reduce((tickets, event) => {
+          tickets[event.eventId] = event
+          return tickets
+        }, {})
       default:
       return state
   }

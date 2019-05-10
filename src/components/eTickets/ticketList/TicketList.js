@@ -10,9 +10,7 @@ export default class TicketList extends Component {
   render() {
     const { tickets } = this.props.event
     // const { user } = this.props.user
-    console.log(tickets, "this.props Ticketlist Comp")
-    // console.log(this.props.user, "user")
-    // console.log(this.props.users.map(users => users.tickets), "this.props users")
+    
     return(
             <div>
               <h1>All Tickets</h1>

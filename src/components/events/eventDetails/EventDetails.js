@@ -3,7 +3,6 @@ import EditEventFormContainer from '../eventForm/EditEventFormContainer';
 import { Link } from 'react-router-dom'
 
 export default (props) => {
-    // console.log(props)
     const { event } = props  
     if (event){
     return (<div>

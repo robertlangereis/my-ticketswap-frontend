@@ -6,7 +6,6 @@ The state will contain the event in an object with the event ID as key
 */
 
 export default (state = null, {type, payload}) => {
-  // console.log("reducer test: ", type, payload)
   switch (type) {
 
     case USER_LOGOUT:
