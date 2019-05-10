@@ -7,10 +7,6 @@ class EditTicketFormContainer extends React.Component {
   state = { }
 
   onChange = (ticket) => {
-    // update the formValues property with the new data from the input field
-    // console.log(ticket.target.title, "ticket.target.title")
-    // console.log(ticket.target.name, "ticket.target.name")
-    // console.log(this.state, "this state")
     this.setState({
       formValues: {
         ...this.state.formValues,
@@ -23,11 +19,9 @@ class EditTicketFormContainer extends React.Component {
     this.setState({
       editMode: true,
       formValues: {
-        // name: this.props.ticket.name,
-        // description: this.props.ticket.description,
         ticket_description: this.props.ticket_description,
-        // start_date: this.props.ticket.start_date,
-        // end_date: this.props.ticket.end_date
+        price: this.props.ticket.price,
+        image_url: this.props.ticket.image_url
       }
     })
   }
@@ -42,10 +36,8 @@ class EditTicketFormContainer extends React.Component {
       end_date: ''
     })
     this.props.editTicket(this.props.id, this.state.formValues)
-    console.log("onSubmit send. This.props.ticket.id" ,this.props.id, "this.state.value", this.state.formValues)
   }
   render() {
-    console.log(this.props, "this.props")
     return (<div>
     <h1>Edit this Ticket
     </h1>
@@ -61,7 +53,6 @@ class EditTicketFormContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  // tickets: state.tickets,
   ticket: state.ticket
 })
 

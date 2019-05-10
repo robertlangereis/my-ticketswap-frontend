@@ -11,7 +11,6 @@ class TicketListContainer extends React.Component {
  
 componentDidMount() {
   // this.props.getTickets(params.ticketId)
-  // console.log(this.props)
   // this.props.getUsers()
 }
 
@@ -19,9 +18,6 @@ componentDidMount() {
     if (this.props){
     return<div> 
       <TicketList event={this.props.event}/> 
-      {/* {console.log(this.props.users, "this.props.users")} */}
-      {/* <h1>Create a New Advertisement</h1> */}
-      {/* <TicketFormFormContainer/> */}
       </div>}
     else return 'Loading tickets...'
 }

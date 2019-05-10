@@ -30,8 +30,6 @@ const eventUpdateSuccess = () => ({
 
 
 export const getEvents = () => (dispatch, getState) => {
-  // const state = getState()
-  // console.log("action state", state.events)
   if (getState().events) return
   request
     .get(`${baseUrl}/events`)
@@ -42,13 +40,10 @@ export const getEvents = () => (dispatch, getState) => {
 }
 
 export const getEvent = (eventId) => (dispatch) => {
-  // console.log("action test - eventId:",eventId)
-  // console.log("action test - request incoming:",request)
   request
   .get(`${baseUrl}/events/${eventId}`)
   .then(response => {
     if(response.ok){
-      console.log("action test - response.body:",response.body)
       dispatch(updateEvent(response.body))
         }
         else{return "there was an error loading the event"}
@@ -58,12 +53,8 @@ export const getEvent = (eventId) => (dispatch) => {
 
 export const createEvent = (eventName, eventDescription, image_url, start_date, end_date) => (dispatch, getState) => {
   const state = getState()
-  console.log("action test - STATE:",state)
   const jwt = state.currentUser.jwt
-  console.log("action test - JWT:",jwt)
   if (isExpired(jwt)) return dispatch(logout())
-  console.log("survived JWT")
-  // console.log("something")
   request
   .post(`${baseUrl}/events`)
   .set('Authorization', `Bearer ${jwt}`)
@@ -75,7 +66,6 @@ export const createEvent = (eventName, eventDescription, image_url, start_date, 
     end_date: 'eind-datum'})
   .then(result => {
     if(result.ok){
-    console.log("action test - response.body:",result.body)
     dispatch(addEvent(result.body)) 
   }
   else {return "there was an error creating the event"}
@@ -84,7 +74,6 @@ export const createEvent = (eventName, eventDescription, image_url, start_date, 
 }
 //
 export const eventUpdate = (eventId, commentId) => (dispatch, getState) => {
-  console.log("action test")
   const state = getState()
   const jwt = state.currentUser.jwt
 

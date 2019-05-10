@@ -38,7 +38,6 @@ class EditEventFormContainer extends React.Component {
       end_date: ''
     })
     this.props.eventUpdate(this.props.event.eventId, this.state.formValues)
-    console.log("onSubmit send. This.props.event.eventId" ,this.props.event.eventId, "this.state.value", this.state.formValues)
   }
 
   render() {

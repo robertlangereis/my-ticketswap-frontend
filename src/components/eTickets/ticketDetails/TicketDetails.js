@@ -15,14 +15,13 @@ export default (props) => {
         else if (color.red === true) return <h3 style={{ color: "red" }}>"NOTE: HIGH FRAUD RISK"</h3>
       }
 
-    // console.log(props)
     const { ticket, event } = props  
     
     if (ticket && event){
         if (ticket.fraudpercentage < 30) color.green = true
         else if (ticket.fraudpercentage > 30 && ticket.fraudpercentage < 60) color.orange = true 
         else if (ticket.fraudpercentage > 60) color.red = true 
-    // console.log("event props loaded", event)
+        
     return (<div>
                 <br></br>
                 <Link style={{display: 'block', height: '100%', color: 'Blue'}} to={`/`}>Back to Eventlist</Link>

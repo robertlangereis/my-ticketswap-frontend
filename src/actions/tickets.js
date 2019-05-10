@@ -32,12 +32,10 @@ const updateTicketSuccess = () => ({
 
 
 export const getTickets = (eventId) => (dispatch) => {
-  // console.log("action tickets test eventID:",eventId)
   request
     .get(`${baseUrl}/events/${eventId}/tickets/`)
     .then(response => {
       if(response.ok){
-        // console.log("action tickets test - response.body:",response.body)
         dispatch(updateTickets(response.body))
           }
           else{return "there was an error loading the event"}
@@ -46,17 +44,10 @@ export const getTickets = (eventId) => (dispatch) => {
   }
 
 export const getTicket = (ticketId) => (dispatch) => {
-  // console.log("action test - eventId:",eventId)
-  console.log("action test - ticketId:",ticketId)
-  // const state = getState()
-  // const jwt = state.currentUser.jwt
-  // if (isExpired(jwt)) return dispatch(logout())
-  // console.log("action getTicket test - request incoming:",request)
   request
   .get(`${baseUrl}/events/${ticketId.eventId}/tickets/${ticketId}`)
   .then(response => {
     if(response.ok){
-      console.log("action test - GET_TICKET response.body:",response.body)
       dispatch(updateTicket(response.body))
         }
         else{return "there was an error loading the ticket"}
@@ -67,10 +58,7 @@ export const getTicket = (ticketId) => (dispatch) => {
 export const createTicket = (eventId, data) => (dispatch, getState) => {
   const state = getState()
   const jwt = state.currentUser.jwt
-  console.log("action test - CREATE_TICKET data:",data)
-  console.log("action test - CREATE_TICKET eventID:",eventId)
   if (isExpired(jwt)) return dispatch(logout())
-  console.log("survived JWT:",jwt)
   request
     .post(`${baseUrl}/events/${eventId}/tickets/`)
     .set('Authorization', `Bearer ${jwt}`)
@@ -81,7 +69,6 @@ export const createTicket = (eventId, data) => (dispatch, getState) => {
 
 export const editTicket = (ticketId, data) => (dispatch, getState, next) => {
   const state = getState()
-  console.log("action test", state)
   const jwt = state.currentUser.jwt
   if (isExpired(jwt)) return dispatch(logout())
   request
