@@ -7,6 +7,8 @@ export default (props) => {
     const { event } = props  
     if (event){
     return (<div>
+            <br></br>
+            <Link style={{display: 'block', height: '100%', color: 'Blue'}} to={`/`}>Back to Eventlist</Link>
             <h1>{event.eventName}</h1>
             <p>{event.eventDescription}</p>
             <img src={event.image_url} width="300" height="150" alt={"event"}/>
@@ -15,12 +17,7 @@ export default (props) => {
             <br></br>
             <i>end date:{event.end_date}</i>
             <br></br>
-            {/* <button onClick={onDelete}>Delete Event</button> */}
-            <br></br>
             <EditEventFormContainer/>
-            <button type="button">
-                <Link style={{display: 'block', height: '100%'}} to={`/`}>HOME</Link>
-            </button>
             </div>)    }
     else return 'Loading Events...'
 }

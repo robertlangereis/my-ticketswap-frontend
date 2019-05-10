@@ -30,19 +30,13 @@ class TicketDetailsContainer extends React.Component {
     // console.log("this.props.match.params.id bij TicketDetailsCont",this.props.match.params.id)
     // console.log(this.props.getTicket(1))
   }
-
-  onDelete = () => {
-    // this.props.deleteTicket(this.props.event.id)
-    this.props.history.push('/')
-  }
   
   render() {
     console.log("this.props in render is:", this.props.userId)
     return (<div><TicketDetails
-      onDelete={this.onDelete}
       ticket={this.props.ticket}
       event={this.props.event}
-      // values={this.state}
+      values={this.state}
     /><br></br>
     </div>
     )

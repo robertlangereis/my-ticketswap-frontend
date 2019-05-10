@@ -23,9 +23,9 @@ class EditEventFormContainer extends React.Component {
     this.setState({
       editMode: true,
       formValues: {
-        name: this.props.event.name,
-        description: this.props.event.description,
-        image_url: this.props.event.picture_url,
+        eventName: this.props.event.eventName,
+        eventDescription: this.props.event.eventDescription,
+        image_url: this.props.event.image_url,
         start_date: this.props.event.start_date,
         end_date: this.props.event.end_date
       }
@@ -35,8 +35,8 @@ class EditEventFormContainer extends React.Component {
   onSubmit = (event) => {
     event.preventDefault()
     this.setState({
-      name: '',
-      description: '',
+      eventName: '',
+      eventDescription: '',
       image_url: '',
       start_date: '',
       end_date: ''
@@ -47,8 +47,7 @@ class EditEventFormContainer extends React.Component {
 
   render() {
     return (<div>
-    <h1>Edit this Event
-    </h1>
+    <h3>Edit this Event</h3>
     <button onClick={ this.onEdit }>Edit Event</button>
     { this.state.editMode && 
     <EventForm

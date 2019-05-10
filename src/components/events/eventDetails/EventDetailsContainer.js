@@ -2,8 +2,10 @@ import React from 'react'
 import {connect} from 'react-redux'
 import EventDetails from './EventDetails'
 import {getEvent} from '../../../actions/events'
-// import {getTickets} from '../../../actions/tickets'
+import {getUsers} from '../../../actions/users'
+import {getTickets} from '../../../actions/tickets'
 import TicketListContainer from '../../eTickets/ticketList/TicketListContainer'
+import TicketFormContainer from '../../eTickets/ticket_form/TicketFormContainer'
 
 class EventDetailsContainer extends React.Component {
   state = {
@@ -20,15 +22,13 @@ class EventDetailsContainer extends React.Component {
     this.props.getEvent(this.props.match.params.id)
     // if (this.props.event === null) this.props.getEvent(this.props.match.params.id)
     // if (this.props.event === null) this.props.getTickets(this.props.match.params.id)
+    if (this.props.authenticated) {
+      if (this.props.users === null) this.props.getUsers()
+    }
     // console.log(this.props.getTickets(this.props.match.params.id), "this.props.getTickets(:id)")
     // console.log(this.props.getTickets(), "this.props.getTickets(:id)")
     // const getEvent = this.props.getEvent(this.props.match.params.id)
     // console.log("this.props.match.params.id bij EventDetailsCont",this.props.match.params.id)
-  }
-
-  onDelete = () => {
-    // this.props.deleteEvent(this.props.event.id)
-    this.props.history.push('/')
   }
   
   render() {
@@ -38,7 +38,6 @@ class EventDetailsContainer extends React.Component {
     return (
     <div>
       <div><EventDetails
-      onDelete={this.onDelete}
       event={this.props.event}
       values={this.state}
       /></div>
@@ -46,6 +45,8 @@ class EventDetailsContainer extends React.Component {
       <div>
         {this.props.event && <TicketListContainer event={this.props.event}/> }
         {/* <div>{console.log(this.props.event, "event tickets EventDetailsContainer Comp")}</div> */}
+        {/* {console.log(this.props.users, "this.props.event")} */}
+        {this.props.event && <TicketFormContainer event={this.props.event}/>}
       </div>
     </div>)
   }
@@ -53,8 +54,12 @@ class EventDetailsContainer extends React.Component {
 
 const mapStateToProps = state => ({
   event: state.event,
-  // events: state.events,
-  // tickets: state.eventtickets
+  authenticated: state.currentUser !== null,
+  users: state.users === null ? null : state.users,
 })
 
-export default connect(mapStateToProps, {getEvent})(EventDetailsContainer)
+const mapDispatchToProps = {
+  getUsers, getEvent, getTickets
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EventDetailsContainer)
