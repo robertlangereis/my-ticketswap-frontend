@@ -56,18 +56,23 @@ export const getEvent = (eventId) => (dispatch) => {
     .catch(err => console.error(err))
 }
 
-export const createEvent = ({eventName, eventDescription, image_url, start_date, end_date}) => (dispatch, getState) => {
+export const createEvent = (eventName, eventDescription, image_url, start_date, end_date) => (dispatch, getState) => {
   const state = getState()
-  // console.log("action test - STATE:",state)
+  console.log("action test - STATE:",state)
   const jwt = state.currentUser.jwt
-  // console.log("action test - JWT:",jwt)
+  console.log("action test - JWT:",jwt)
   if (isExpired(jwt)) return dispatch(logout())
-  // console.log("survived JWT")
+  console.log("survived JWT")
   // console.log("something")
   request
   .post(`${baseUrl}/events`)
   .set('Authorization', `Bearer ${jwt}`)
-  .send({eventName: eventName, eventDescription: eventDescription, image_url: image_url, start_date: start_date, end_date: end_date})
+  .send({
+    eventName: 'dingen', 
+    eventDescription: 'dingen', 
+    image_url: 'www.a.nl', 
+    start_date: 'datum',
+    end_date: 'eind-datum'})
   .then(result => {
     if(result.ok){
     console.log("action test - response.body:",result.body)

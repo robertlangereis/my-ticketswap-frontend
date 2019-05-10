@@ -21,7 +21,7 @@ class EventDetailsContainer extends React.Component {
   componentDidMount() {
     this.props.getEvent(this.props.match.params.id)
     // if (this.props.event === null) this.props.getEvent(this.props.match.params.id)
-    if (this.props.event === null) this.props.getTickets(this.props.match.params.id)
+    // if (this.props.event === null) this.props.getTickets(this.props.match.params.id)
     if (this.props.authenticated) {
       if (this.props.users === null) this.props.getUsers()
     }
