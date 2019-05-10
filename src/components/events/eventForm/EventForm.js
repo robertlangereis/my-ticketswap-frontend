@@ -8,8 +8,8 @@ export default (props) => {
             <label htmlFor="name">Eventname</label>
             <input 
                 type="text"
-                name="name" 
-                key="name" 
+                name="eventName" 
+                key="eventName" 
                 value={values.name}
                 onChange={onChange}
                 className='EventForm_name_textarea'>
@@ -17,8 +17,8 @@ export default (props) => {
             <label htmlFor="content">Description</label>
             <textarea 
                 type="text"
-                name="description" 
-                key="description" 
+                name="eventDescription" 
+                key="eventDescription" 
                 value={values.description}
                 onChange={onChange}
                 className='EventForm_descr_textarea'>

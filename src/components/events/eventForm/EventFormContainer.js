@@ -5,8 +5,8 @@ import {createEvent} from '../../../actions/events'
 
 class EventFormContainer extends React.Component {
   state = {
-      name: '',
-      description: '',
+      eventName: '',
+      eventDescription: '',
       image_url: '',
       start_date: '',
       end_date: ''
@@ -23,13 +23,14 @@ class EventFormContainer extends React.Component {
   onSubmit = (event) => {
     event.preventDefault()
     this.setState({
-      name: '',
-      description: '',
+      eventName: '',
+      eventDescription: '',
       image_url: '',
       start_date: '',
       end_date: ''
     })
     this.props.createEvent(this.state)
+    console.log(this.state)
   }
 
   render() {
