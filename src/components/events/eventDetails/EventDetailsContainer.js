@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import EventDetails from './EventDetails'
-import {getEvent} from '../../../actions/events'
+import {getEvent, getEvents} from '../../../actions/events'
 import {getUsers} from '../../../actions/users'
 import {getTickets} from '../../../actions/tickets'
 import TicketListContainer from '../../eTickets/ticketList/TicketListContainer'
@@ -20,18 +20,19 @@ class EventDetailsContainer extends React.Component {
   
   componentDidMount() {
     this.props.getEvent(this.props.match.params.id)
+    this.props.getEvents()
     // if (this.props.event === null) this.props.getEvent(this.props.match.params.id)
     // if (this.props.event === null) this.props.getTickets(this.props.match.params.id)
     if (this.props.authenticated) {
       if (this.props.users === null) this.props.getUsers()
     }
-    // console.log(this.props.getTickets(this.props.match.params.id), "this.props.getTickets(:id)")
     // console.log(this.props.getTickets(), "this.props.getTickets(:id)")
     // const getEvent = this.props.getEvent(this.props.match.params.id)
     // console.log("this.props.match.params.id bij EventDetailsCont",this.props.match.params.id)
   }
   
   render() {
+    console.log(this.props,"this.props")
     // console.log("this.props.events in EDC render is:", this.props.events)
     // console.log("this.props.event in EDC render is:", this.props.event)
     // console.log("this.props.tickets in EDC render is:", this.props.tickets)
@@ -54,12 +55,13 @@ class EventDetailsContainer extends React.Component {
 
 const mapStateToProps = state => ({
   event: state.event,
+  events: state.events,
   authenticated: state.currentUser !== null,
   users: state.users === null ? null : state.users,
 })
 
 const mapDispatchToProps = {
-  getUsers, getEvent, getTickets
+  getUsers, getEvent, getTickets, getEvents
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventDetailsContainer)

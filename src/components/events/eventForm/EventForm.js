@@ -10,7 +10,7 @@ export default (props) => {
                 type="text"
                 name="eventName" 
                 key="eventName" 
-                value={values.name}
+                value={values.eventName}
                 onChange={onChange}
                 className='EventForm_name_textarea'>
             </input>
@@ -20,7 +20,7 @@ export default (props) => {
                 type="text"
                 name="eventDescription" 
                 key="eventDescription" 
-                value={values.description}
+                value={values.eventDescription}
                 onChange={onChange}
                 className='EventForm_descr_textarea'>
             </textarea>
@@ -35,9 +35,9 @@ export default (props) => {
                 className='EventForm_image_url_textarea'>
             </input>
             <br></br>
-            <label htmlFor="datetime-local" style={{color:'white'}}>Start Date </label>
+            <label htmlFor="string" style={{color:'white'}}>Start Date </label>
             <input 
-                type="datetime-local"
+                type="date"
                 name="start_date"
                 key="start_date"
                 value={values.start_date}
@@ -45,9 +45,9 @@ export default (props) => {
                 className='EventForm_start_date_textarea'>
             </input>
             <br></br>
-            <label htmlFor="datetime-local" style={{color:'white'}}>End Date </label>
+            <label htmlFor="date" style={{color:'white'}}>End Date </label>
             <input 
-                type="datetime-local"
+                type="date"
                 name="end_date"
                 key="end_date"
                 value={values.end_date}

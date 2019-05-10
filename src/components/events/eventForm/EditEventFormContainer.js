@@ -7,10 +7,6 @@ class EditEventFormContainer extends React.Component {
   state = { }
 
   onChange = (event) => {
-    // update the formValues property with the new data from the input field
-    // console.log(event.target.title, "event.target.title")
-    // console.log(event.target.name, "event.target.name")
-    // console.log(this.state, "this state")
     this.setState({
       formValues: {
         ...this.state.formValues,
@@ -41,8 +37,8 @@ class EditEventFormContainer extends React.Component {
       start_date: '',
       end_date: ''
     })
-    this.props.eventUpdate(this.props.event.id, this.state.formValues)
-    console.log("onSubmit send. This.props.event.id" ,this.props.event.id, "this.state.value", this.state.formValues)
+    this.props.eventUpdate(this.props.event.eventId, this.state.formValues)
+    console.log("onSubmit send. This.props.event.eventId" ,this.props.event.eventId, "this.state.value", this.state.formValues)
   }
 
   render() {
