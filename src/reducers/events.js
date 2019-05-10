@@ -1,4 +1,4 @@
-import {ADD_EVENT, GET_EVENTS} from '../actions/events'
+import {ADD_EVENT, GET_EVENTS, UPDATE_EVENT} from '../actions/events'
 import {USER_LOGOUT} from '../actions/users'
 
 /*

@@ -1,4 +1,4 @@
-import {ADD_TICKET, GET_TICKETS} from '../actions/tickets'
+import {ADD_TICKET, GET_TICKETS, UPDATE_TICKET} from '../actions/tickets'
 import {USER_LOGOUT} from '../actions/users'
 
 /*
@@ -20,9 +20,6 @@ export default (state = null, {type, payload}) => {
         ...state,
         [payload.id]: payload
       }
-    // case GET_TICKETS:
-    // console.log("TICKETS REDUCER incoming. Payload:", payload)
-    // return state = payload
     case GET_TICKETS:
       return payload.reduce((tickets, event) => {
           tickets[event.eventId] = event
