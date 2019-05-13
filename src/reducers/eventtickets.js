@@ -12,9 +12,8 @@ export default (state = null, {type, payload}) => {
     case ADD_TICKET:
       return {
         ...state,
-        [payload.id]: payload
+        [payload.ticketId]: payload
       }
-    
     case UPDATE_TICKET:
       return {
         ...state,

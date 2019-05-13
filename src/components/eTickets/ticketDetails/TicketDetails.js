@@ -21,7 +21,7 @@ export default (props) => {
         if (ticket.fraudpercentage < 30) color.green = true
         else if (ticket.fraudpercentage > 30 && ticket.fraudpercentage < 60) color.orange = true 
         else if (ticket.fraudpercentage > 60) color.red = true 
-        
+
     return (<div>
                 <br></br>
                 <Link style={{display: 'block', height: '100%', color: 'Blue'}} to={`/`}>Back to Eventlist</Link>
@@ -34,8 +34,6 @@ export default (props) => {
             <h2>PRICE: €{ticket.price}</h2>
             <br></br>
             <EditTicketFormContainer/>
-            <button type="button">
-            </button>
             </div>)    }
     else return 'Loading Ticket...'
 }

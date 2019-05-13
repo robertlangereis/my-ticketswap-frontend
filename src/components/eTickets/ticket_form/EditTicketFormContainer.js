@@ -20,7 +20,7 @@ class EditTicketFormContainer extends React.Component {
       editMode: true,
       formValues: {
         ticket_description: this.props.ticket_description,
-        price: this.props.ticket.price,
+        price: this.props.ticket.ticket_price,
         image_url: this.props.ticket.image_url
       }
     })
@@ -29,13 +29,11 @@ class EditTicketFormContainer extends React.Component {
   onSubmit = (ticket) => {
     ticket.preventDefault()
     this.setState({
-      name: '',
-      description: '',
-      image_url: '',
-      start_date: '',
-      end_date: ''
+      imageUrl: '',
+      price: '',
+      ticketDescription: '',
     })
-    this.props.editTicket(this.props.id, this.state.formValues)
+    this.props.editTicket(this.props.ticket.ticketId, this.state.formValues)
   }
   render() {
     return (<div>
@@ -53,7 +51,7 @@ class EditTicketFormContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  ticket: state.ticket
+  ticket: state.eventticket
 })
 
 export default connect(mapStateToProps, {editTicket})(EditTicketFormContainer)

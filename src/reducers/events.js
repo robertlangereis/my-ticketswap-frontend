@@ -10,27 +10,19 @@ export default (state = null, {type, payload}) => {
 
     case USER_LOGOUT:
       return null
-    
-    case ADD_EVENT:
-      return {
-        ...state,
-        [payload.id]: payload
-      }
-    
-    case UPDATE_EVENT:
-      return {
-        ...state,
-        [payload.id]: payload
-      }
 
     case GET_EVENTS:
       return state = payload
-    // case GET_EVENTS:
-    //   return payload.reduce((events, event) => {
-    //     events[event.id] = event
-    //     return events
-    //   }, {})
+  
+    case ADD_EVENT:
+      console.log("incoming add_event action at the reducers dispatched with state:", state, "and payload:", payload)
+      return state = [...state, payload]
 
+    case UPDATE_EVENT:
+      return {
+        ...state,
+        [payload.eventId]: payload
+      }
     default:
       return state
   }

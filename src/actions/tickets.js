@@ -21,10 +21,9 @@ const updateTicket = ticket => ({
   payload: ticket
 })
 
-
-const addTicket = ticket => ({
+const addTicket = payload => ({
   type: ADD_TICKET,
-  payload: ticket
+  payload
 })
 
 const updateTicketSuccess = () => ({
@@ -61,12 +60,20 @@ export const createTicket = (eventId, data) => (dispatch, getState) => {
   const jwt = state.currentUser.jwt
   if (isExpired(jwt)) return dispatch(logout())
   request
-    .post(`${baseUrl}/events/${eventId}/tickets/`)
-    .set('Authorization', `Bearer ${jwt}`)
-    .send(data)
-    .then(result => dispatch(addTicket(result.body)))
+  .post(`${baseUrl}/events/${eventId}/tickets/`)
+  .set('Authorization', `Bearer ${jwt}`)
+  .send(data)
+  .then(result => {
+    console.log("rusult:", result)
+    if(result.ok){
+      console.log("dispatch createTicket Action, result.body:", result.body)
+    dispatch(addTicket(result.body)) 
+  }
+  else {return "there was an error creating the event"}
+  })
     .catch(err => console.error(err))
 }
+
 
 export const editTicket = (ticketId, data) => (dispatch, getState, next) => {
   const state = getState()

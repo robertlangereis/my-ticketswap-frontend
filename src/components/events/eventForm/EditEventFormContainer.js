@@ -7,10 +7,11 @@ class EditEventFormContainer extends React.Component {
   state = { }
 
   onChange = (event) => {
+    console.log(this.state.formValues, "this.state.formValues")
     this.setState({
       formValues: {
         ...this.state.formValues,
-        [event.target.name]: event.target.name.value
+        [event.target.name]: event.target.value
       }
     })
   }
@@ -38,6 +39,7 @@ class EditEventFormContainer extends React.Component {
       end_date: ''
     })
     this.props.eventUpdate(this.props.event.eventId, this.state.formValues)
+    console.log(this.state.formValues, "this.state.formValues")
   }
 
   render() {

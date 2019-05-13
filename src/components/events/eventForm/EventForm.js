@@ -37,7 +37,7 @@ export default (props) => {
             <br></br>
             <label htmlFor="string" style={{color:'white'}}>Start Date </label>
             <input 
-                type="date"
+                type="text"
                 name="start_date"
                 key="start_date"
                 value={values.start_date}
@@ -47,7 +47,7 @@ export default (props) => {
             <br></br>
             <label htmlFor="date" style={{color:'white'}}>End Date </label>
             <input 
-                type="date"
+                type="text"
                 name="end_date"
                 key="end_date"
                 value={values.end_date}
