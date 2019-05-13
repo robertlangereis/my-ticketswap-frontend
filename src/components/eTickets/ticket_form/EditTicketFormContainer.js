@@ -33,9 +33,10 @@ class EditTicketFormContainer extends React.Component {
       price: '',
       ticketDescription: '',
     })
-    this.props.editTicket(this.props.ticket.ticketId, this.state.formValues)
+    this.props.editTicket(this.props.event.eventId ,this.props.ticket.ticketId, this.state.formValues)
   }
   render() {
+    console.log(this.props)
     return (<div>
     <h1>Edit this Ticket
     </h1>
@@ -51,7 +52,8 @@ class EditTicketFormContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  ticket: state.eventticket
+  ticket: state.eventticket,
+  event: state.event
 })
 
 export default connect(mapStateToProps, {editTicket})(EditTicketFormContainer)

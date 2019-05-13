@@ -1,4 +1,4 @@
-import {GET_TICKET} from '../actions/tickets'
+import {GET_TICKET, UPDATE_TICKET} from '../actions/tickets'
 import {USER_LOGOUT} from '../actions/users'
 
 /*
@@ -12,9 +12,14 @@ export default (state = null, {type, payload}) => {
       return null
   
     case GET_TICKET:
-    console.log("incoming")
       return state = payload
-
+    
+    case UPDATE_TICKET:
+      return {
+        ...state,
+        [payload.ticketId]: payload
+      }
+      
     default:
       return state
   }

@@ -9,11 +9,9 @@ import {getEvent} from '../../../actions/events'
 class TicketDetailsContainer extends React.Component {
   state = {
     formValues: {
-      name: '',
-      description: '',
-      image_url: '',
-      start_date: '',
-      end_date: ''
+      price: '',
+      ticketDescription: '',
+      image_url: ''
     }
   }
   

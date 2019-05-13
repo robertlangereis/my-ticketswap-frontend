@@ -23,6 +23,7 @@ export default (state = null, {type, payload}) => {
         ...state,
         [payload.eventId]: payload
       }
+
     default:
       return state
   }

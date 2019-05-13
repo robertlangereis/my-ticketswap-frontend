@@ -75,25 +75,26 @@ export const createTicket = (eventId, data) => (dispatch, getState) => {
 }
 
 
-export const editTicket = (ticketId, data) => (dispatch, getState, next) => {
+export const editTicket = (eventId, ticketId, data) => (dispatch, getState, next) => {
+  console.log(eventId, "eventId", ticketId, "ticketId", data, "data")
   const state = getState()
   const jwt = state.currentUser.jwt
   if (isExpired(jwt)) return dispatch(logout())
+  // request
+  // .findByPk(request.params.ticketId)
+  // .then(ticket => {
+  //   if (!ticket) {
+  //     return ticket.status(404).send({
+  //       message: `ticket does not exist`
+  //     })
+  //   }
+  //   return ticket.update(request.body).then(ticket => request.send(ticket))
+  // })
+  // .catch(error => next(error))
   request
-  .findByPk(request.params.ticketId)
-  .then(ticket => {
-    if (!ticket) {
-      return ticket.status(404).send({
-        message: `ticket does not exist`
-      })
-    }
-    return ticket.update(request.body).then(ticket => request.send(ticket))
-  })
-  .catch(error => next(error))
-  request
-    .put(`${baseUrl}/events/:id/tickets/${ticketId}`)
+    .patch(`${baseUrl}/events/${eventId}/tickets/${ticketId}`)
     .set('Authorization', `Bearer ${jwt}`)
     .send({ data })
-    .then(_ => dispatch(updateTicketSuccess()))
+    .then(res => dispatch(updateTicketSuccess(res.body)))
     .catch(err => console.error(err))
 }
