@@ -15,7 +15,6 @@ export default (state = null, {type, payload}) => {
       return state = payload
   
     case ADD_EVENT:
-      console.log("incoming add_event action at the reducers dispatched with state:", state, "and payload:", payload)
       return state = [...state, payload]
 
     case UPDATE_EVENT:

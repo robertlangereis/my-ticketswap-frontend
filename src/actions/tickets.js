@@ -26,8 +26,9 @@ const addTicket = payload => ({
   payload
 })
 
-const updateTicketSuccess = () => ({
-  type: UPDATE_TICKET_SUCCESS
+const updateTicketSuccess = payload => ({
+  type: UPDATE_TICKET_SUCCESS,
+  payload
 })
 
 
@@ -76,25 +77,13 @@ export const createTicket = (eventId, data) => (dispatch, getState) => {
 
 
 export const editTicket = (eventId, ticketId, data) => (dispatch, getState, next) => {
-  console.log(eventId, "eventId", ticketId, "ticketId", data, "data")
   const state = getState()
   const jwt = state.currentUser.jwt
   if (isExpired(jwt)) return dispatch(logout())
-  // request
-  // .findByPk(request.params.ticketId)
-  // .then(ticket => {
-  //   if (!ticket) {
-  //     return ticket.status(404).send({
-  //       message: `ticket does not exist`
-  //     })
-  //   }
-  //   return ticket.update(request.body).then(ticket => request.send(ticket))
-  // })
-  // .catch(error => next(error))
   request
     .patch(`${baseUrl}/events/${eventId}/tickets/${ticketId}`)
     .set('Authorization', `Bearer ${jwt}`)
-    .send({ data })
+    .send(data)
     .then(res => dispatch(updateTicketSuccess(res.body)))
     .catch(err => console.error(err))
 }

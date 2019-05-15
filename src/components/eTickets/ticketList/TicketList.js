@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from '../../../../node_modules/react-router-dom'
 
+
 export default class TicketList extends Component {
       
    renderTickets(ticket, eventId, user) {  

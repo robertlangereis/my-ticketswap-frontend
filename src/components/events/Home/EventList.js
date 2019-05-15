@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
+
 export default class EventList extends Component {
     renderEvents(event) {    
     return<Link key={event.eventId} to={`/events/${event.eventId}`}><h3>{event.eventName}</h3></Link>

@@ -1,5 +1,6 @@
 import React, {PureComponent} from 'react'
 import './LoginForm.css'
+import Button from '@material-ui/core/Button'
 
 export default class LoginForm extends PureComponent {
 	state = {}
@@ -35,7 +36,7 @@ export default class LoginForm extends PureComponent {
   					} onChange={ this.handleChange } />
           </label>
 
-  				<button type="submit">Login</button>
+  				<Button variant="contained" color="primary" type="submit">Login</Button>
   			</form>
 		  </div>)
 	}

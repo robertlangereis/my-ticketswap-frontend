@@ -1,5 +1,6 @@
 import React from 'react'
 import './EventForm.css'
+import Button from '@material-ui/core/Button'
 
 export default (props) => {
     const { onSubmit, onChange, values } = props  
@@ -54,7 +55,7 @@ export default (props) => {
                 onChange={onChange}
                 className='EventForm_end_date_textarea'>
             </input>
-            <button type="submit">Submit</button>
+            <Button variant="contained" color="primary" type="submit">Submit</Button>
         </form>
     )
 }

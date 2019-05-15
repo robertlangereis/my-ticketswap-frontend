@@ -2,15 +2,17 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {editTicket} from '../../../actions/tickets'
 import TicketForm from './TicketForm'
+import Button from '@material-ui/core/Button'
 
 class EditTicketFormContainer extends React.Component {
   state = { }
 
   onChange = (ticket) => {
+    
     this.setState({
       formValues: {
         ...this.state.formValues,
-        [ticket.target.name]: ticket.target.name.value
+        [ticket.target.name]: ticket.target.value
       }
     })
   }
@@ -19,9 +21,9 @@ class EditTicketFormContainer extends React.Component {
     this.setState({
       editMode: true,
       formValues: {
-        ticket_description: this.props.ticket_description,
-        price: this.props.ticket.ticket_price,
-        image_url: this.props.ticket.image_url
+        ticketDescription: this.props.ticket.ticketDescription,
+        price: this.props.ticket.price,
+        imageUrl: this.props.ticket.imageUrl
       }
     })
   }
@@ -36,11 +38,9 @@ class EditTicketFormContainer extends React.Component {
     this.props.editTicket(this.props.event.eventId ,this.props.ticket.ticketId, this.state.formValues)
   }
   render() {
-    console.log(this.props)
+    // console.log(this.props)
     return (<div>
-    <h1>Edit this Ticket
-    </h1>
-    <button onClick={ this.onEdit }>Edit Ticket</button>
+    <Button variant="contained" color="primary" onClick={ this.onEdit }>Edit Ticket</Button>
     { this.state.editMode && 
     <TicketForm
       onSubmit={this.onSubmit}

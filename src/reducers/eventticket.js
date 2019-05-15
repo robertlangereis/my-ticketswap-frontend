@@ -1,4 +1,4 @@
-import {GET_TICKET, UPDATE_TICKET} from '../actions/tickets'
+import {GET_TICKET, UPDATE_TICKET_SUCCESS} from '../actions/tickets'
 import {USER_LOGOUT} from '../actions/users'
 
 /*
@@ -14,11 +14,8 @@ export default (state = null, {type, payload}) => {
     case GET_TICKET:
       return state = payload
     
-    case UPDATE_TICKET:
-      return {
-        ...state,
-        [payload.ticketId]: payload
-      }
+    case UPDATE_TICKET_SUCCESS:
+      return state = payload
       
     default:
       return state
