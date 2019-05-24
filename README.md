@@ -1,5 +1,7 @@
-# Tic Tac Toe front end
+# My TicketSwap - Robert Langereis
+This is the frontend for the replica rebuilt, by Robert Langereis, as a final (individual) assignment for the Codaisseur Academy.
 
-This is the frontend for the game starter in which you can play Tic Tac Toe with a friend. It's build using the standard `create-react-app` so the usual `yarn start` can be used.
+It has these endpoints:
 
-The backend (server) of this project must be running for the app to function correctly.
+Install the dependencies using npm install
+npm run start to start the webapp. NOTE: this requires the running backend, see: https://github.com/robertlangereis/my-ticketswap-backend
