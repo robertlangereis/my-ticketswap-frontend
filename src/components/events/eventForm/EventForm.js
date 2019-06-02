@@ -1,5 +1,6 @@
 import React from 'react'
 import './EventForm.css'
+import Button from '@material-ui/core/Button'
 
 export default (props) => {
     const { onSubmit, onChange, values } = props  
@@ -37,7 +38,7 @@ export default (props) => {
             <br></br>
             <label htmlFor="string" style={{color:'white'}}>Start Date </label>
             <input 
-                type="date"
+                type="text"
                 name="start_date"
                 key="start_date"
                 value={values.start_date}
@@ -47,14 +48,14 @@ export default (props) => {
             <br></br>
             <label htmlFor="date" style={{color:'white'}}>End Date </label>
             <input 
-                type="date"
+                type="text"
                 name="end_date"
                 key="end_date"
                 value={values.end_date}
                 onChange={onChange}
                 className='EventForm_end_date_textarea'>
             </input>
-            <button type="submit">Submit</button>
+            <Button variant="contained" color="primary" type="submit">Submit</Button>
         </form>
     )
 }

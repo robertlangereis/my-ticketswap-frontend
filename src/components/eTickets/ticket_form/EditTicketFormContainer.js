@@ -2,15 +2,17 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {editTicket} from '../../../actions/tickets'
 import TicketForm from './TicketForm'
+import Button from '@material-ui/core/Button'
 
 class EditTicketFormContainer extends React.Component {
   state = { }
 
   onChange = (ticket) => {
+    
     this.setState({
       formValues: {
         ...this.state.formValues,
-        [ticket.target.name]: ticket.target.name.value
+        [ticket.target.name]: ticket.target.value
       }
     })
   }
@@ -19,9 +21,9 @@ class EditTicketFormContainer extends React.Component {
     this.setState({
       editMode: true,
       formValues: {
-        ticket_description: this.props.ticket_description,
+        ticketDescription: this.props.ticket.ticketDescription,
         price: this.props.ticket.price,
-        image_url: this.props.ticket.image_url
+        imageUrl: this.props.ticket.imageUrl
       }
     })
   }
@@ -29,19 +31,16 @@ class EditTicketFormContainer extends React.Component {
   onSubmit = (ticket) => {
     ticket.preventDefault()
     this.setState({
-      name: '',
-      description: '',
-      image_url: '',
-      start_date: '',
-      end_date: ''
+      imageUrl: '',
+      price: '',
+      ticketDescription: '',
     })
-    this.props.editTicket(this.props.id, this.state.formValues)
+    this.props.editTicket(this.props.event.eventId ,this.props.ticket.ticketId, this.state.formValues)
   }
   render() {
+    // console.log(this.props)
     return (<div>
-    <h1>Edit this Ticket
-    </h1>
-    <button onClick={ this.onEdit }>Edit Ticket</button>
+    <Button variant="contained" color="primary" onClick={ this.onEdit }>Edit Ticket</Button>
     { this.state.editMode && 
     <TicketForm
       onSubmit={this.onSubmit}
@@ -53,7 +52,8 @@ class EditTicketFormContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  ticket: state.ticket
+  ticket: state.eventticket,
+  event: state.event
 })
 
 export default connect(mapStateToProps, {editTicket})(EditTicketFormContainer)

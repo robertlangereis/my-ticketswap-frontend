@@ -1,7 +1,9 @@
-# My TicketSwap - Robert Langereis
-This is the frontend for the replica rebuilt, by Robert Langereis, as a final (individual) assignment for the Codaisseur Academy.
+# TicketSwap rebuild - Robert Langereis
 
-It has these endpoints:
+This is the frontend (clientside) for a Ticketswap lookalike, created by Robert Langereis, as a final assignment for the Codaisseur Academy. 
 
-Install the dependencies using npm install
-npm run start to start the webapp. NOTE: this requires the running backend, see: https://github.com/robertlangereis/my-ticketswap-backend
+## Running
+
+* Install the dependencies using `npm install`
+* `npm start`
+* This frontend requires a backend that can be found (installed and run) here: https://github.com/robertlangereis/my-ticketswap-backend

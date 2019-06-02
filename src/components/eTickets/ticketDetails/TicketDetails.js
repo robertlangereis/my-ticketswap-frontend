@@ -1,6 +1,8 @@
 import React from 'react'
 import EditTicketFormContainer from '../ticket_form/EditTicketFormContainer';
 import { Link } from 'react-router-dom'
+import Icon from '@material-ui/core/Icon';
+
 
 export default (props) => {
     let color={
@@ -21,10 +23,10 @@ export default (props) => {
         if (ticket.fraudpercentage < 30) color.green = true
         else if (ticket.fraudpercentage > 30 && ticket.fraudpercentage < 60) color.orange = true 
         else if (ticket.fraudpercentage > 60) color.red = true 
-        
+
     return (<div>
                 <br></br>
-                <Link style={{display: 'block', height: '100%', color: 'Blue'}} to={`/`}>Back to Eventlist</Link>
+                <Link style={{display: 'block', height: '100%', color: 'primary'}} to={`/`}><Icon>home </Icon>Return to Eventlist</Link>
             <h1>Eventname: {event.eventName}</h1>
             <p>Ticket description: {ticket.ticketDescription}</p>
             <h3>We calculated that the risk of this ticket being a fraud is: {ticket.fraudpercentage}%</h3>
@@ -34,8 +36,6 @@ export default (props) => {
             <h2>PRICE: €{ticket.price}</h2>
             <br></br>
             <EditTicketFormContainer/>
-            <button type="button">
-            </button>
             </div>)    }
     else return 'Loading Ticket...'
 }
