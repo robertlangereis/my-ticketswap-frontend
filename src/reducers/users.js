@@ -24,7 +24,7 @@ export default (state = null, {type, payload}) => {
 
     case UPDATE_USERS:
       return payload.reduce((users, user) => {
-        users[user.id] = user
+        users[user.userId] = user
         return users
       }, {})
 

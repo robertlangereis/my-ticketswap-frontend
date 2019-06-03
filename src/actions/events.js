@@ -30,8 +30,6 @@ const eventUpdateSuccess = () => ({
 
 
 export const getEvents = () => (dispatch, getState) => {
-  const state = getState()
-  console.log("action state", state.events)
   if (getState().events) return
   request
     .get(`${baseUrl}/events`)
@@ -42,13 +40,10 @@ export const getEvents = () => (dispatch, getState) => {
 }
 
 export const getEvent = (eventId) => (dispatch) => {
-  // console.log("action test - eventId:",eventId)
-  // console.log("action test - request incoming:",request)
   request
   .get(`${baseUrl}/events/${eventId}`)
   .then(response => {
     if(response.ok){
-      // console.log("action test - response.body:",response.body)
       dispatch(updateEvent(response.body))
         }
         else{return "there was an error loading the event"}
@@ -56,21 +51,29 @@ export const getEvent = (eventId) => (dispatch) => {
     .catch(err => console.error(err))
 }
 
-export const createEvent = () => (dispatch, getState) => {
+export const createEvent = (eventName, eventDescription, image_url, start_date, end_date) => (dispatch, getState) => {
   const state = getState()
   const jwt = state.currentUser.jwt
-
   if (isExpired(jwt)) return dispatch(logout())
-
   request
-    .post(`${baseUrl}/events`)
-    .set('Authorization', `Bearer ${jwt}`)
-    .then(result => dispatch(addEvent(result.body)))
+  .post(`${baseUrl}/events`)
+  .set('Authorization', `Bearer ${jwt}`)
+  .send({
+    eventName: 'dingen', 
+    eventDescription: 'dingen', 
+    image_url: 'www.a.nl', 
+    start_date: 'datum',
+    end_date: 'eind-datum'})
+  .then(result => {
+    if(result.ok){
+    dispatch(addEvent(result.body)) 
+  }
+  else {return "there was an error creating the event"}
+  })
     .catch(err => console.error(err))
 }
-
+//
 export const eventUpdate = (eventId, commentId) => (dispatch, getState) => {
-  console.log("action test")
   const state = getState()
   const jwt = state.currentUser.jwt
 
