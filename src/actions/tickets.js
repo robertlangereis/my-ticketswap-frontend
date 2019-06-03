@@ -9,8 +9,6 @@ export const GET_TICKET = 'GET_TICKET'
 export const UPDATE_TICKET_SUCCESS = 'UPDATE_TICKET_SUCCESS'
 export const UPDATE_TICKET = 'UPDATE_TICKET'
 
-// export const UPDATE_TICKET_SUCCESS = 'UPDATE_TICKET_SUCCESS'
-
 const updateTickets = tickets => ({
   type: GET_TICKETS,
   payload: tickets
@@ -65,9 +63,7 @@ export const createTicket = (eventId, data) => (dispatch, getState) => {
   .set('Authorization', `Bearer ${jwt}`)
   .send(data)
   .then(result => {
-    console.log("rusult:", result)
     if(result.ok){
-      console.log("dispatch createTicket Action, result.body:", result.body)
     dispatch(addTicket(result.body)) 
   }
   else {return "there was an error creating the event"}

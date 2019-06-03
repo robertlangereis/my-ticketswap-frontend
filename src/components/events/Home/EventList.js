@@ -9,7 +9,6 @@ export default class EventList extends Component {
  
   render() {
     const { events } = this.props
-    console.log(events)
     return(
             <div>
               <h1>All Events</h1>

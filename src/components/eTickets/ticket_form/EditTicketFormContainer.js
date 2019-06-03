@@ -38,7 +38,6 @@ class EditTicketFormContainer extends React.Component {
     this.props.editTicket(this.props.event.eventId ,this.props.ticket.ticketId, this.state.formValues)
   }
   render() {
-    // console.log(this.props)
     return (<div>
     <Button variant="contained" color="primary" onClick={ this.onEdit }>Edit Ticket</Button>
     { this.state.editMode && 

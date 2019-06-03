@@ -4,7 +4,6 @@ import {logout} from './users'
 import {isExpired} from '../jwt'
 
 export const ADD_EVENT = 'ADD_EVENT'
-// export const UPDATE_EVENT = 'UPDATE_EVENT'
 export const GET_EVENTS = 'GET_EVENTS'
 export const GET_EVENT = 'GET_EVENT'
 export const UPDATE_EVENT = 'UPDATE_EVENT'
@@ -63,7 +62,6 @@ export const createEvent = (data) => (dispatch, getState) => {
   .send(data)
   .then(result => {
     if(result.ok){
-      console.log("dispatch createEvent Action, result.body:", result.body)
     dispatch(addEvent(result.body)) 
   }
   else {return "there was an error creating the event"}
@@ -74,7 +72,6 @@ export const createEvent = (data) => (dispatch, getState) => {
 export const eventUpdate = (eventId, data) => (dispatch, getState) => {
   const state = getState()
   const jwt = state.currentUser.jwt
-  console.log(data)
   if (isExpired(jwt)) return dispatch(logout())
 
   request

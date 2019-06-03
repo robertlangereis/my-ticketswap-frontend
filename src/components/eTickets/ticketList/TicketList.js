@@ -10,7 +10,6 @@ export default class TicketList extends Component {
  
   render() {
     const { tickets } = this.props.event
-    // const { user } = this.props.user
     
     return(
             <div>

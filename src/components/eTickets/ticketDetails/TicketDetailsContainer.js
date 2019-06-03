@@ -35,8 +35,6 @@ class TicketDetailsContainer extends React.Component {
 const mapStateToProps = state => ({
   event: state.event,
   ticket: state.eventticket,
-  // events: state.events,
-  // tickets: state.tickets
   authenticated: state.currentUser !== null,
   userId: state.currentUser && userId(state.currentUser.jwt),
   users: state.users
