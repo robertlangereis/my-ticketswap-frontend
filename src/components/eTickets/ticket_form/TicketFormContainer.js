@@ -25,7 +25,7 @@ class TicketFormContainer extends React.Component {
     })
     this.props.createTicket(this.props.event.eventId, this.state)
   }
-
+  
   render() {
     return (<div>
       <h2>Submit a new Ticket for this Event:</h2>

@@ -1,5 +1,6 @@
 import React from 'react'
 import './TicketForm.css'
+import Button from '@material-ui/core/Button'
 
 export default (props) => {
     const { onSubmit, onChange, values } = props  
@@ -34,7 +35,7 @@ export default (props) => {
                 onChange={onChange}
                 className='TicketForm_picture_url_textarea'>
             </input>
-            <button type="submit">Submit</button>
+            <Button variant="contained" color="primary" type="submit">Submit</Button>
         </form>
     )
 }

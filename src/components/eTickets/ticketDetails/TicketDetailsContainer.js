@@ -9,11 +9,9 @@ import {getEvent} from '../../../actions/events'
 class TicketDetailsContainer extends React.Component {
   state = {
     formValues: {
-      name: '',
-      description: '',
-      image_url: '',
-      start_date: '',
-      end_date: ''
+      price: '',
+      ticketDescription: '',
+      image_url: ''
     }
   }
   
@@ -37,8 +35,6 @@ class TicketDetailsContainer extends React.Component {
 const mapStateToProps = state => ({
   event: state.event,
   ticket: state.eventticket,
-  // events: state.events,
-  // tickets: state.tickets
   authenticated: state.currentUser !== null,
   userId: state.currentUser && userId(state.currentUser.jwt),
   users: state.users

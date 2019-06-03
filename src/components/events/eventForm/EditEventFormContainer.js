@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {eventUpdate} from '../../../actions/events'
 import EventForm from './EventForm'
+import Button from '@material-ui/core/Button'
 
 class EditEventFormContainer extends React.Component {
   state = { }
@@ -10,7 +11,7 @@ class EditEventFormContainer extends React.Component {
     this.setState({
       formValues: {
         ...this.state.formValues,
-        [event.target.name]: event.target.name.value
+        [event.target.name]: event.target.value
       }
     })
   }
@@ -42,8 +43,7 @@ class EditEventFormContainer extends React.Component {
 
   render() {
     return (<div>
-    <h3>Edit this Event</h3>
-    <button onClick={ this.onEdit }>Edit Event</button>
+    <Button variant="contained" color="primary" onClick={ this.onEdit }>Edit Event</Button>
     { this.state.editMode && 
     <EventForm
       onSubmit={this.onSubmit}

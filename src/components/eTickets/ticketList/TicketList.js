@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from '../../../../node_modules/react-router-dom'
 
+
 export default class TicketList extends Component {
       
    renderTickets(ticket, eventId, user) {  
@@ -9,7 +10,6 @@ export default class TicketList extends Component {
  
   render() {
     const { tickets } = this.props.event
-    // const { user } = this.props.user
     
     return(
             <div>

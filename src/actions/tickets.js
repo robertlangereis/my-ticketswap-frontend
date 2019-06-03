@@ -7,8 +7,7 @@ export const ADD_TICKET = 'ADD_TICKET'
 export const GET_TICKETS = 'GET_TICKETS'
 export const GET_TICKET = 'GET_TICKET'
 export const UPDATE_TICKET_SUCCESS = 'UPDATE_TICKET_SUCCESS'
-
-// export const UPDATE_TICKET_SUCCESS = 'UPDATE_TICKET_SUCCESS'
+export const UPDATE_TICKET = 'UPDATE_TICKET'
 
 const updateTickets = tickets => ({
   type: GET_TICKETS,
@@ -20,14 +19,14 @@ const updateTicket = ticket => ({
   payload: ticket
 })
 
-
-const addTicket = ticket => ({
+const addTicket = payload => ({
   type: ADD_TICKET,
-  payload: ticket
+  payload
 })
 
-const updateTicketSuccess = () => ({
-  type: UPDATE_TICKET_SUCCESS
+const updateTicketSuccess = payload => ({
+  type: UPDATE_TICKET_SUCCESS,
+  payload
 })
 
 
@@ -60,32 +59,27 @@ export const createTicket = (eventId, data) => (dispatch, getState) => {
   const jwt = state.currentUser.jwt
   if (isExpired(jwt)) return dispatch(logout())
   request
-    .post(`${baseUrl}/events/${eventId}/tickets/`)
-    .set('Authorization', `Bearer ${jwt}`)
-    .send(data)
-    .then(result => dispatch(addTicket(result.body)))
+  .post(`${baseUrl}/events/${eventId}/tickets/`)
+  .set('Authorization', `Bearer ${jwt}`)
+  .send(data)
+  .then(result => {
+    if(result.ok){
+    dispatch(addTicket(result.body)) 
+  }
+  else {return "there was an error creating the event"}
+  })
     .catch(err => console.error(err))
 }
 
-export const editTicket = (ticketId, data) => (dispatch, getState, next) => {
+
+export const editTicket = (eventId, ticketId, data) => (dispatch, getState, next) => {
   const state = getState()
   const jwt = state.currentUser.jwt
   if (isExpired(jwt)) return dispatch(logout())
   request
-  .findByPk(request.params.ticketId)
-  .then(ticket => {
-    if (!ticket) {
-      return ticket.status(404).send({
-        message: `ticket does not exist`
-      })
-    }
-    return ticket.update(request.body).then(ticket => request.send(ticket))
-  })
-  .catch(error => next(error))
-  request
-    .put(`${baseUrl}/events/:id/tickets/${ticketId}`)
+    .patch(`${baseUrl}/events/${eventId}/tickets/${ticketId}`)
     .set('Authorization', `Bearer ${jwt}`)
-    .send({ data })
-    .then(_ => dispatch(updateTicketSuccess()))
+    .send(data)
+    .then(res => dispatch(updateTicketSuccess(res.body)))
     .catch(err => console.error(err))
 }

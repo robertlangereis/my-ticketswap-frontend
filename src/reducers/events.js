@@ -1,4 +1,4 @@
-import {ADD_EVENT, GET_EVENTS} from '../actions/events'
+import {ADD_EVENT, GET_EVENTS, UPDATE_EVENT} from '../actions/events'
 import {USER_LOGOUT} from '../actions/users'
 
 /*
@@ -10,26 +10,18 @@ export default (state = null, {type, payload}) => {
 
     case USER_LOGOUT:
       return null
-    
-    case ADD_EVENT:
-      return {
-        ...state,
-        [payload.id]: payload
-      }
-    
-    case UPDATE_EVENT:
-      return {
-        ...state,
-        [payload.id]: payload
-      }
 
     case GET_EVENTS:
       return state = payload
-    // case GET_EVENTS:
-    //   return payload.reduce((events, event) => {
-    //     events[event.id] = event
-    //     return events
-    //   }, {})
+  
+    case ADD_EVENT:
+      return state = [...state, payload]
+
+    case UPDATE_EVENT:
+      return {
+        ...state,
+        [payload.eventId]: payload
+      }
 
     default:
       return state
