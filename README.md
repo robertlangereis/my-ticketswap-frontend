@@ -1,7 +1,7 @@
 # My TicketSwap - Robert Langereis
 
 *NOTE THIS PROJECT IS STILL IN DEVELOPMENT*
-*We had 5 days to finish this final assignment, frontend and backend: https://github.com/robertlangereis/my-ticketswap-*
+*We had 5 days to finish this final assignment, building both the frontend and backend (to be found here: https://github.com/robertlangereis/my-ticketswap-backend)*
 
 This is the frontend webapp is a replica of Ticketswap (basic features), by Robert Langereis, as a final (individual) assignment for the Codaisseur Academy. Dev tech used for this client-side webapp: 
 - React / Redux
